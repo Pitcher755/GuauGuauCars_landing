@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verificación de Conductor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#44A682",
+              "background-light": "#F5F5F5",
+              "background-dark": "#151d1a",
+              "header-dark": "#3B5954",
+              "text-light": "#333333",
+              "text-dark": "#E0E0E0",
+              "text-secondary-light": "#666666",
+              "text-secondary-dark": "#A3B2AC",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1F2926",
+              "warning-light": "#FFF3CD",
+              "warning-dark": "#4D3800",
+              "warning-text-light": "#664D03",
+              "warning-text-dark": "#FFD77A"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "0.75rem",
+              "xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex h-16 items-center bg-card-light dark:bg-header-dark p-4 shadow-sm">
+<button class="text-text-light dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-text-light dark:text-white text-xl font-bold leading-tight flex-1 text-center pr-10">Verificación de Conductor</h1>
+</div>
+<main class="flex-1 flex flex-col gap-6 p-4 pb-28">
+<!-- Section: Animal Transport Permits -->
+<section class="flex flex-col gap-4 rounded-xl bg-card-light dark:bg-card-dark p-4 shadow-sm">
+<h2 class="text-text-light dark:text-white text-lg font-bold leading-tight">Permisos de Transporte Animal</h2>
+<!-- List Item for File Upload -->
+<div class="flex items-center gap-4 py-2">
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-12">
+<span class="material-symbols-outlined text-2xl">description</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-text-light dark:text-white text-base font-medium leading-normal line-clamp-1">Permiso de Transporte</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal line-clamp-2">Sube un archivo PDF o JPG</p>
+</div>
+<div class="shrink-0">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full h-10 px-4 bg-primary text-white text-sm font-bold leading-normal transition-colors hover:bg-primary/90">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+<span class="truncate">Subir</span>
+</button>
+</div>
+</div>
+<!-- Instructional Text Block -->
+<div class="flex items-start gap-3 rounded-lg bg-background-light dark:bg-background-dark p-3">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark text-xl mt-0.5">info</span>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-relaxed">
+                        Asegúrate de que el documento sea legible. Los archivos grandes se almacenarán de forma segura en nuestro sistema.
+                    </p>
+</div>
+</section>
+<!-- Section: Approved Vehicle -->
+<section class="flex flex-col gap-4 rounded-xl bg-card-light dark:bg-card-dark p-4 shadow-sm">
+<h2 class="text-text-light dark:text-white text-lg font-bold leading-tight">Vehículo Homologado</h2>
+<!-- Text Input Fields -->
+<div class="flex flex-col gap-4">
+<div>
+<label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1.5" for="license-plate">Matrícula del vehículo</label>
+<input class="w-full rounded-lg border-none bg-background-light dark:bg-background-dark text-text-light dark:text-white placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark focus:ring-2 focus:ring-primary" id="license-plate" placeholder="Ej: 1234 ABC" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1.5" for="brand-model">Marca y Modelo</label>
+<input class="w-full rounded-lg border-none bg-background-light dark:bg-background-dark text-text-light dark:text-white placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark focus:ring-2 focus:ring-primary" id="brand-model" placeholder="Ej: Volkswagen Caddy" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-1.5" for="capacity">Capacidad (Nº de transportines)</label>
+<input class="w-full rounded-lg border-none bg-background-light dark:bg-background-dark text-text-light dark:text-white placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark focus:ring-2 focus:ring-primary" id="capacity" placeholder="Ej: 3" type="number"/>
+</div>
+</div>
+</section>
+<!-- Warning Banner -->
+<div class="flex items-start gap-3 rounded-xl bg-warning-light dark:bg-warning-dark p-4">
+<span class="material-symbols-outlined text-warning-text-light dark:text-warning-text-dark text-2xl mt-0.5">warning</span>
+<p class="text-warning-text-light dark:text-warning-text-dark text-sm font-medium leading-relaxed">
+                    No podrás publicar viajes hasta que tu documentación sea verificada y aprobada por nuestro equipo.
+                </p>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent">
+<button class="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-4 bg-primary text-white text-base font-bold leading-normal shadow-lg shadow-primary/30 transition-colors hover:bg-primary/90">
+<span class="truncate">Enviar para Verificación</span>
+</button>
+</div>
+</div>
+</body></html>

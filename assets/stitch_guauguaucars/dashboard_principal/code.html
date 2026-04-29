@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GuauGuauCars Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#44A682", // Accent Green from user request
+              "background-light": "#f6f8f7", // Keeping this as a placeholder, but the design is dark
+              "background-dark": "#111715", // A dark base
+              "surface-dark": "#1c2622", // Card background
+              "header-dark": "#3B5954", // Deep Teal from user request
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-dark dark group/design-root overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="flex items-center bg-header-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-white">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+</button>
+</div>
+<h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">GuauGuauCars</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="relative flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-1 right-1 flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+</span>
+</button>
+</div>
+</header>
+<main class="flex-grow">
+<!-- HeadlineText -->
+<h2 class="text-white tracking-light text-[32px] font-bold leading-tight px-4 text-left pb-3 pt-6">¿A dónde viajas con tu mascota?</h2>
+<!-- ButtonGroup -->
+<div class="flex justify-center">
+<div class="flex flex-1 gap-3 max-w-[480px] flex-col items-stretch px-4 py-3">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] w-full">
+<span class="truncate">Buscar un Viaje</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary/30 text-primary text-base font-bold leading-normal tracking-[0.015em] w-full">
+<span class="truncate">Publicar un Viaje</span>
+</button>
+</div>
+</div>
+<!-- SectionHeader -->
+<h3 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-8">Tus Próximos Viajes</h3>
+<!-- Card List -->
+<div class="flex flex-col gap-4 px-4 pb-24">
+<!-- Card 1 -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-surface-dark p-4 shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+<div class="flex flex-[2_2_0px] flex-col gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-[#9eb7ad] text-sm font-normal leading-normal">25 de Diciembre, 10:00 AM</p>
+<p class="text-white text-lg font-bold leading-tight">Madrid a Barcelona</p>
+<p class="text-[#9eb7ad] text-sm font-normal leading-normal">Conductor: Juan Pérez</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#293832] text-white text-sm font-medium leading-normal w-fit">
+<span class="truncate">Ver Detalles</span>
+</button>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="Mapa de una ruta de viaje con un pin en la ubicación de destino." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDn8GiPVoNN9koiG9WwkAqTswe0n4eLzjbj4B9rsun2lXwLpS6cPpxmjVBTqc1rEiEqu13xcMODdmA0y65SLMyrhimDpi2YgfIyIYhTOgQwpJL1yjRBT_SROjMteM5lcTycVQQilSJ_QsZHnzwSLu-gLHo_-V0WrTy-ratDGgBqTa673alzxElbHNPbxm2KaUWStl5-Z-mDCViOajpOopzDEk4IT09MTIgLOfpuwhHAZc6KwO5iggCbzWbmIyjodsb5LsJANmKMQh2U");'></div>
+</div>
+<!-- Card 2 -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-surface-dark p-4 shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+<div class="flex flex-[2_2_0px] flex-col gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-[#9eb7ad] text-sm font-normal leading-normal">30 de Diciembre, 08:30 PM</p>
+<p class="text-white text-lg font-bold leading-tight">Valencia a Sevilla</p>
+<p class="text-[#9eb7ad] text-sm font-normal leading-normal">Pasajero: Ana García</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#293832] text-white text-sm font-medium leading-normal w-fit">
+<span class="truncate">Ver Detalles</span>
+</button>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="Mapa abstracto de una ciudad con colores neón." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJYVuueODWOWa-5Hy5Rw9U4FlbMeRRSCBGERE4MEBF1M-4yjSAeVxB2q202PnW7i0OK3w33fu_OBLdQcD3F5xjIGpkyGtTOo8nt-xiC4ZVNkZsnw5AWepC24z0T1Z5LrUnzX-ivEaW8nsSQS1lchd6D45BtJx6p--3j1x_WD1AwlzyahXzC3ynmZomJfVH7x4XdYefLuyHHeZC4BKZbg5mJnHo5nuqbq-4Fu1yY0WcoISrW8ZkJNNW_FXjubMemJsaodV_10EJ_g-_");'></div>
+</div>
+<!-- Empty State Card -->
+<div class="flex flex-col items-center justify-center gap-4 rounded-xl bg-surface-dark p-8 text-center shadow-[0_0_4px_rgba(0,0,0,0.1)]">
+<span class="material-symbols-outlined text-5xl text-primary">luggage</span>
+<p class="text-white text-base font-bold leading-tight">Aún no tienes viajes</p>
+<p class="text-[#9eb7ad] text-sm font-normal leading-normal max-w-xs">Busca o publica tu primer viaje para verlo aquí. ¡Tu mascota te lo agradecerá!</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 h-20 bg-header-dark/80 backdrop-blur-sm border-t border-white/10 flex justify-around items-center px-4">
+<button class="flex flex-col items-center justify-center gap-1 text-primary">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs font-bold">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-white/70">
+<span class="material-symbols-outlined text-2xl">explore</span>
+<span class="text-xs font-medium">Viajes</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-white/70">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+<span class="text-xs font-medium">Mensajes</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 text-white/70">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-xs font-medium">Perfil</span>
+</button>
+</nav>
+</div>
+</body></html>

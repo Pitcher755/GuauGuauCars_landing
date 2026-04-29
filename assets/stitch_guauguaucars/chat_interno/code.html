@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chat - GuauGuauCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#44A682",
+            "background-light": "#FFFFFF",
+            "background-dark": "#11211b",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative mx-auto flex h-screen max-h-[960px] w-full max-w-[480px] flex-col bg-background-light dark:bg-background-dark group/design-root overflow-hidden">
+<!-- Header Bar -->
+<header class="flex shrink-0 items-center gap-3 bg-[#3B5954] p-3 text-white dark:bg-gray-900/50">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="aspect-square w-12 rounded-full bg-cover bg-center bg-no-repeat" data-alt="Profile picture of Juan Pérez, the driver" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAd58600RSL9Ebkd7mpD22Nt81LFstjVGtPlr6gPdINQTzorIGum9y62yO1LplbrqCmppku4TvFrt-UWKNbajsfVaoHiFaKJzkQReQiKAUfqN3xDfXi7vy_ibosJHHfOZuCK3SnbmA40e2Mb-3cQuS2rpzbV5ypJ90CdhVzRrH46IEJOo2bbND-CH2u95vEWvpt7XZ2BHARid4F0ekCebK6mrlwS8NUbK_Y7qM0n1ybDFv5OWH4sCmouMjomJ5FNlYCf87CPsI6wpGS");'></div>
+<div class="flex-1">
+<h1 class="text-base font-bold leading-tight tracking-tight">Juan Pérez - Conductor</h1>
+<p class="text-xs font-normal leading-tight text-white/80">En línea</p>
+</div>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-transparent text-white">
+<span class="material-symbols-outlined text-2xl">call</span>
+</button>
+</header>
+<!-- Chat Body -->
+<main class="flex-1 overflow-y-auto p-4">
+<div class="flex flex-col gap-4">
+<!-- Recipient Message -->
+<div class="flex items-end gap-2.5 self-start">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-8 shrink-0" data-alt="Profile picture of Juan Pérez" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoosMXn-6GYlw36NWwylGhFFEguOdQbh_rRs6a0O5i7YNNk5uKr2JrEMZooHeAS1dT2cb7OKH5w-adpfkQyssRNBxWajGU8fJOvv1uNMHIuDozCq-UDE_MqKfznISZBHFoHPaulpq9gBEtf4r8_irViSLgh2xef2uEBSrUZJaKKl1SBl23ieX8NbpI9ZN2GzzaAMr7V7meYjirmca8V36w_Mw-XmYoFOBXdmNzO_t5HpUlK2j2Kia0Gr8Xh3fE4TZ0kRO4_7uAgliE");'></div>
+<div class="flex flex-col gap-1.5 items-start">
+<div class="flex max-w-[280px] rounded-xl rounded-bl-sm bg-[#F1F1F1] px-4 py-3 text-gray-800 dark:bg-gray-700 dark:text-gray-100">
+<p class="text-sm font-normal leading-normal">¡Hola! Estoy en camino para recoger a Rocky. Llego en 5 minutos.</p>
+</div>
+<span class="text-xs text-gray-400 dark:text-gray-500">10:30 AM</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-end gap-2.5 self-end">
+<div class="flex flex-col gap-1.5 items-end">
+<div class="flex max-w-[280px] rounded-xl rounded-br-sm bg-primary px-4 py-3 text-white">
+<p class="text-sm font-normal leading-normal">¡Perfecto! Te esperamos fuera.</p>
+</div>
+<div class="flex items-center gap-1">
+<span class="text-xs text-gray-400 dark:text-gray-500">10:31 AM</span>
+<span class="material-symbols-outlined !text-base text-primary">done_all</span>
+</div>
+</div>
+</div>
+<!-- Recipient Message -->
+<div class="flex items-end gap-2.5 self-start">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-8 shrink-0" data-alt="Profile picture of Juan Pérez" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0WFFYgW5VzewECEIiYWZnToshtKNgfOJgZi8Egrv0bYqu10bMq9OvSflZAiCyCQp9JclwqDicMb_faEJaD6SVOl7D0lP94h9D--x4fUUjLHaH6dJs6mjCspyuzZn0rPWUUS7WIoCR2Bzs8pj4bBFFxU2ERZ6fN4AqgeOxio7e6ve2isb3PijtyNHCkIX7owzR7UVL_e9JhBui05Sg1GMUcF-7nHLalaSj9druQMJKHjMC5RX6B6qlE845ocdYNr7IheIWN-21s0cf");'></div>
+<div class="flex flex-col gap-1.5 items-start">
+<div class="flex max-w-[280px] rounded-xl rounded-bl-sm bg-[#F1F1F1] px-4 py-3 text-gray-800 dark:bg-gray-700 dark:text-gray-100">
+<p class="text-sm font-normal leading-normal">Ya estoy aquí.</p>
+</div>
+<span class="text-xs text-gray-400 dark:text-gray-500">10:35 AM</span>
+</div>
+</div>
+<!-- Typing Indicator -->
+<div class="flex items-end gap-2.5 self-start">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-8 shrink-0" data-alt="Profile picture of Juan Pérez" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_7PhwGbh80nfT-d46YxebAB_0YEisIOT3kkISc6dgfbOkOhk8JiS0VI1R6rVyc34C2EdLkpPXp2VFc5OJq29gq6vLOlFgULw_pu0kLk_w8eFT6vYAofsh91euETRoJMw841A8_B2E4J6s233AMeHCtHqIeKzsHzgxHine-BDVcQ7m-2lQNkb-EI3M76JdWyhNWOtbOhShvjQkob4MFRvnEmeCWYba-gkFpAnPiOsUakdhYnOesXz7dcbuQqSHJaE_8i_QLIva3H6Y");'></div>
+<div class="flex max-w-[280px] items-center gap-1.5 rounded-xl rounded-bl-sm bg-[#F1F1F1] px-4 py-3 text-gray-400 dark:bg-gray-700 dark:text-gray-500">
+<span class="h-1.5 w-1.5 animate-[bounce_1s_infinite_0.1s] rounded-full bg-current"></span>
+<span class="h-1.5 w-1.5 animate-[bounce_1s_infinite_0.2s] rounded-full bg-current"></span>
+<span class="h-1.5 w-1.5 animate-[bounce_1s_infinite_0.3s] rounded-full bg-current"></span>
+</div>
+</div>
+</div>
+</main>
+<!-- Input Footer -->
+<footer class="flex shrink-0 items-center gap-2 border-t border-gray-200 bg-background-light p-3 dark:border-gray-700 dark:bg-background-dark">
+<button class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined text-2xl">add_circle_outline</span>
+</button>
+<div class="relative flex-1">
+<input class="form-input h-10 w-full rounded-full border-gray-300 bg-gray-100 px-4 text-sm text-gray-800 placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400" placeholder="Escribe un mensaje..." type="text"/>
+</div>
+<button class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary text-white">
+<span class="material-symbols-outlined text-2xl">send</span>
+</button>
+</footer>
+</div>
+</body></html>

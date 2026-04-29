@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GuauGuauCars - Transporte para tu mascota</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#44A682",
+            "secondary": "#3B5954",
+            "background-light": "#F5F5F5",
+            "background-dark": "#11211b",
+            "text-light": "#333333",
+            "text-dark": "#E0E0E0"
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root">
+<div class="flex-grow flex flex-col">
+<!-- Header Section -->
+<header class="bg-secondary dark:bg-black/20 text-white p-4">
+<div class="max-w-md mx-auto flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl text-primary">pets</span>
+<p class="text-white tracking-light text-2xl font-bold leading-tight">GuauGuauCars</p>
+</div>
+</header>
+<!-- Hero Image -->
+<div class="w-full">
+<div class="bg-cover bg-center flex flex-col justify-end overflow-hidden h-64" data-alt="A happy dog looking out of a car window on a sunny day." style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 40%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCF0TYTvM9pdT1vQANoVY9VmV-ybu8HJC8tgP16fZS5QXWgS4gtB1ct1xQrL1GJpGXiX3gS3yK27k2KepcYePwDJghj1Fz1bfDExRlbPZeb-8IHXXR1StL7EWLlWznH39BLAd64Jcngzks7EP7eOdyuaMqVhuOpwZ4sHVyqopOBL6uycbSIH6kVUiSlzsYM7AvK2nrVqwMWV7f5Am-UDf1OoEyBADSmeWhr0_OPKOVDt-KDRivonmYE8zX00vENmj7yoR0zBDsb8zNh");'>
+</div>
+</div>
+<!-- Content Section -->
+<main class="flex-grow flex flex-col justify-end px-4 py-6">
+<div class="w-full max-w-md mx-auto text-center">
+<!-- Value Proposition -->
+<h1 class="text-text-light dark:text-text-dark tracking-light text-[32px] font-bold leading-tight">El viaje que tu mascota merece</h1>
+<p class="text-text-light/80 dark:text-text-dark/80 text-base font-normal leading-normal pt-2 pb-8">Conectamos a dueños de mascotas con transportistas de confianza.</p>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-3 items-stretch w-full">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] shadow-sm hover:bg-primary/90 transition-colors">
+<span class="truncate">Crear una cuenta</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-transparent border border-primary/50 text-text-light dark:text-text-dark text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/10 transition-colors">
+<span class="truncate">Iniciar Sesión</span>
+</button>
+</div>
+<!-- Social Login Separator -->
+<p class="text-text-light/60 dark:text-text-dark/60 text-sm font-normal leading-normal py-6">O continúa con</p>
+<!-- Social Login Buttons -->
+<div class="flex justify-center items-center gap-4">
+<button class="flex h-12 w-12 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" data-alt="Login with Google">
+<img alt="Google logo" class="h-6 w-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6baLI51Bz_IusnHV98hKNYdXbFDCD5l00qV9GAQQdWaP0HjsBAtnQzGHU3YS8q7M9SwBj7guuzgNmuPkpxNdonnN9ryfqt4xO9UHkXyJKO7YPXjTUXtcQmKndUOaclDhG9E_CG2OFXi6i3XhsufDlVKTc7NwD4cfew0GTO0syUIk3WiQkEMLYUUt17gM46NnlWpikQq-c3N6qlgLQsjf-ZipKFBfsjBW5kNl93VApuVkVumKxAGxfGM00rGKATNiIiIkOjRGbv6cx"/>
+</button>
+<button class="flex h-12 w-12 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" data-alt="Login with Facebook">
+<img alt="Facebook logo" class="h-6 w-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuoqGIFXH0eA0I3dZUyQ9F-qLTO0IleNvNYcE4OgD8mt_kLiRtJdikJy7Od09zBdHtGp6Jtuc4XHkzoGDGhL-lJey8zU174niF-0iUFzYSTx_D2I97OsG2bxE4W0AJ1Gh6jBxbbh7u_1AzCQZLsvrBVgiMwVSjs4iQSPEfgUo_qPQ9aHh2vsMI-oo7oRLK2lkkdhLpsyryZ-uF_Ku4Y7E8UJdU5GTaBIJzqL1pcPCfq81ts3BAL_2WsaD8BCUws8CWViI7t1E_ymz7"/>
+</button>
+<button class="flex h-12 w-12 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 shadow-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" data-alt="Login with Apple">
+<img alt="Apple logo" class="h-6 w-6 dark:invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBatdgIoBaLX-n1s6ZbmFDVdEHml72V_8QLIlQ94wksXICXtaB2RjA8va5gEaE5FBM1yg2urfAzlOztSF3WwDeO8guNebmfEz4j6cNsvYqUau28Wi6tUvOGOQ8A7um2lgmYA7RUBmIN9vkZ88BmuBeU1SsMfO82C4oOi_Mj1rv5gXtpZ4V_Qo1M6612mS54o3rHNVWI9qE_dxnOLwGhOVImLatGyQ8JnfXI_eb5P6Jka6ztx3_PvXzJJQM1oU8SN1HfT-263jsJHMn5"/>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

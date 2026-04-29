@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirma tu Viaje - GuauGuauCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#44A682",
+            "secondary": "#3B5954",
+            "background-light": "#F5F5F5",
+            "background-dark": "#11211b",
+            "text-primary-light": "#212121",
+            "text-primary-dark": "#F5F5F5",
+            "text-secondary-light": "#757575",
+            "text-secondary-dark": "#a0a0a0",
+            "card-light": "#FFFFFF",
+            "card-dark": "#2a3b38",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center bg-card-light dark:bg-card-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-700">
+<div class="text-text-primary-light dark:text-text-primary-dark flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="text-text-primary-light dark:text-text-primary-dark text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Confirma tu viaje</h1>
+<div class="flex size-10 shrink-0"></div>
+</header>
+<main class="flex-grow pb-32">
+<!-- Final Price Card -->
+<div class="bg-secondary p-6">
+<h2 class="text-white tracking-light text-[32px] font-bold leading-tight text-center">Precio Final: 65.50€</h2>
+</div>
+<!-- Map -->
+<div class="flex px-4 py-5">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl object-cover shadow-sm" data-alt="Mapa mostrando la ruta desde el origen hasta el destino." data-location="Madrid" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmP8r_4B1bgHtSe1ij9WbE76fpJamkG2CmX0vayY_e7axb66KUxG5s5PScepWZ4Ai-9KuCVYKORTyR0gTjhRc1R4VysnNmvU1IMf2skRuoSBmGd8BD80cDLnPq3QmXTQ_tiJCZpdBIM-pbXuA7THYi8QFjUoeLS20VJKAYABTlZTUImiWRuKq9Ua_ODElYGG0Q-9tPuXk6ntiMtvaYOY1IKnzf6kphPHE9d_BLDoKhPS36wlt_szGBdUEKCx25KqhIpDw9CRzNQq44");'></div>
+</div>
+<div class="px-4 space-y-5">
+<!-- Route Section -->
+<div>
+<h3 class="text-text-primary-light dark:text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em] pb-3">Ruta</h3>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm overflow-hidden">
+<div class="flex items-center gap-4 p-4 min-h-[72px]">
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">my_location</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-medium leading-normal line-clamp-1">Recogida</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal line-clamp-2">Calle de la Alegría 123, Madrid</p>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-700 mx-4"/>
+<div class="flex items-center gap-4 p-4 min-h-[72px]">
+<div class="text-primary flex items-center justify-center rounded-full bg-primary/20 shrink-0 size-10">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-medium leading-normal line-clamp-1">Entrega</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal line-clamp-2">Avenida del Descanso 45, Barcelona</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Pet Section -->
+<div>
+<h3 class="text-text-primary-light dark:text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em] pb-3">Tu Mascota</h3>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm overflow-hidden p-4">
+<div class="flex items-center gap-4">
+<img alt="Foto de un perro Golden Retriever" class="size-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB03kLdsqEwkZQ73evkIIiQPJ5r9SSnpyN3wabKRLCpZ-w2Mik2RmDCRN2NOfyqcHoPRShDxbxXu2xb-_Jx0XDBqjWgg9VIsl3dPGv8mxhSVJuIAq2XzDbE5vr8c8jDjUTF2Mv65EuJMKfU8gr8BCouOtECCQHNEXaP17Y1L72DAl6ikjSgScDduxyGQEzaO8O4geTz9XVue_mG6BUeoSCbeBhN50r6x5Xfq8t2hx62lWaQwCTnSex5pxeyow4bMdz4AfBAIKPA5bUV"/>
+<div class="flex flex-col justify-center">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-semibold leading-normal">Rocky</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">Golden Retriever</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Carrier Section -->
+<div>
+<h3 class="text-text-primary-light dark:text-text-primary-dark text-xl font-bold leading-tight tracking-[-0.015em] pb-3">Tu Transportista</h3>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm overflow-hidden p-4">
+<div class="flex items-center gap-4">
+<img alt="Foto de perfil del transportista" class="size-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7AXckgYc2x7ZMJJRBopbjpbi86ZCfjfPIwrRLRn_LRlTdedKeI2ZtVxnEPlEz1TP3k8u2tpnBhk2H_MNFtbWE-pfEv6qujc8j8t8sdjSWs9IxxghjBrzXAVKnyIEJlHiArTYs4xYPOSu3hVs-8EUbbbQlV4I9oH3VfkZ07cCxbYJsm_2ki_s_Vltje7B8mPS0iMYySTnhy9YrJZ_UmIDiR1dlalhRaLeFnSlLwULak7CT2rRNZBZAMyaEqpFGCmuf1AB2JkmKe_9K"/>
+<div class="flex-grow">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-semibold leading-normal">Carlos Gómez</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">Citroën Berlingo</p>
+</div>
+<div class="flex items-center gap-1 bg-primary/20 text-primary py-1 px-3 rounded-full">
+<span class="material-symbols-outlined text-base">star</span>
+<span class="font-bold text-sm">4.8</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full bg-card-light dark:bg-card-dark border-t border-gray-200 dark:border-gray-700 p-4 pt-3 z-10">
+<div class="flex flex-col items-center gap-3">
+<button class="w-full h-12 flex items-center justify-center bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/90 transition-colors">
+          Confirmar y Pagar 65.50€
+        </button>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-xs text-center">
+          Al confirmar, aceptas los <a class="font-semibold text-primary" href="#">Términos de Servicio</a> y la <a class="font-semibold text-primary" href="#">Política de Cancelación</a>.
+        </p>
+</div>
+</footer>
+</div>
+</body></html>

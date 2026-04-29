@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notificaciones - GuauGuauCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#44A682",
+              "background-light": "#F8F9FA",
+              "background-dark": "#11211b",
+              "header-dark": "#3B5954",
+              "text-primary-light": "#1C1B1F",
+              "text-secondary-light": "#49454F",
+              "text-primary-dark": "#E6E1E5",
+              "text-secondary-dark": "#CAC4D0",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1C2D27",
+              "icon-bg-light": "#E0F2EB",
+              "icon-bg-dark": "#293832"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem", 
+              "lg": "0.75rem",
+              "xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center justify-between gap-4 bg-background-light dark:bg-header-dark px-4 shadow-sm dark:shadow-black/20">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-text-primary-light dark:text-text-primary-dark">arrow_back</span>
+</div>
+<h1 class="flex-1 text-xl font-bold text-text-primary-light dark:text-text-primary-dark">Notificaciones</h1>
+<button class="shrink-0 rounded-full px-4 py-2 text-sm font-semibold text-primary">Marcar todo como leído</button>
+</header>
+<main class="flex-1 overflow-y-auto px-4 pt-4">
+<!-- Date Separator: Hoy -->
+<div class="mb-2">
+<h2 class="text-sm font-bold uppercase tracking-wider text-text-secondary-light dark:text-text-secondary-dark">Hoy</h2>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Notification Card: Nuevo Mensaje -->
+<div class="flex items-center gap-4 rounded-xl bg-card-light dark:bg-card-dark p-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-icon-bg-light dark:bg-icon-bg-dark">
+<span class="material-symbols-outlined text-primary">chat_bubble</span>
+</div>
+<div class="flex min-w-0 flex-1 flex-col justify-center">
+<p class="truncate text-base font-semibold text-text-primary-light dark:text-text-primary-dark">Nuevo mensaje de Ana</p>
+<p class="truncate text-sm text-text-secondary-light dark:text-text-secondary-dark">¡Claro! Estaré allí en 5 minutos para recoger a Rocky.</p>
+</div>
+<div class="flex shrink-0 flex-col items-end gap-2 self-start">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Hace 5 min</p>
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Notification Card: Reserva Confirmada -->
+<div class="flex items-center gap-4 rounded-xl bg-card-light dark:bg-card-dark p-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-icon-bg-light dark:bg-icon-bg-dark">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="flex min-w-0 flex-1 flex-col justify-center">
+<p class="truncate text-base font-semibold text-text-primary-light dark:text-text-primary-dark">Tu reserva ha sido Confirmada</p>
+<p class="truncate text-sm text-text-secondary-light dark:text-text-secondary-dark">Reserva #5678 para Rocky con Carlos</p>
+</div>
+<div class="flex shrink-0 flex-col items-end gap-2 self-start">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Hace 20 min</p>
+<div class="size-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+<!-- Date Separator: Ayer -->
+<div class="my-4">
+<h2 class="text-sm font-bold uppercase tracking-wider text-text-secondary-light dark:text-text-secondary-dark">Ayer</h2>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Notification Card: Viaje completado -->
+<div class="flex items-center gap-4 rounded-xl bg-card-light dark:bg-card-dark p-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-icon-bg-light dark:bg-icon-bg-dark">
+<span class="material-symbols-outlined text-primary">pets</span>
+</div>
+<div class="flex min-w-0 flex-1 flex-col justify-center">
+<p class="truncate text-base font-semibold text-text-primary-light dark:text-text-primary-dark">¡Viaje completado!</p>
+<p class="truncate text-sm text-text-secondary-light dark:text-text-secondary-dark">El viaje de Luna con el conductor David ha finalizado.</p>
+</div>
+<div class="flex shrink-0 flex-col items-end gap-2 self-start">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">18:30</p>
+</div>
+</div>
+<!-- Notification Card: Recordatorio -->
+<div class="flex items-center gap-4 rounded-xl bg-card-light dark:bg-card-dark p-4">
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-icon-bg-light dark:bg-icon-bg-dark">
+<span class="material-symbols-outlined text-primary">alarm</span>
+</div>
+<div class="flex min-w-0 flex-1 flex-col justify-center">
+<p class="truncate text-base font-semibold text-text-primary-light dark:text-text-primary-dark">Recordatorio de viaje</p>
+<p class="truncate text-sm text-text-secondary-light dark:text-text-secondary-dark">Tu viaje está programado para hoy a las 10:00 AM.</p>
+</div>
+<div class="flex shrink-0 flex-col items-end gap-2 self-start">
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">08:00</p>
+</div>
+</div>
+</div>
+<!-- Empty State Example -->
+<div class="flex hidden flex-col items-center justify-center py-24 text-center">
+<div class="flex size-24 items-center justify-center rounded-full bg-card-light dark:bg-card-dark">
+<span class="material-symbols-outlined text-4xl text-text-secondary-light dark:text-text-secondary-dark">notifications_off</span>
+</div>
+<h3 class="mt-6 text-lg font-bold text-text-primary-light dark:text-text-primary-dark">Aún no tienes notificaciones</h3>
+<p class="mt-1 max-w-xs text-sm text-text-secondary-light dark:text-text-secondary-dark">Cuando recibas una nueva alerta o mensaje, aparecerá aquí.</p>
+</div>
+</main>
+</div>
+</body></html>

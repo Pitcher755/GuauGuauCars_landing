@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO ── -->
+  <title>GuauGuauCars – La primera plataforma de viajes compartidos para tu mascota</title>
+  <meta name="description" content="Viaja en coche con tu perro sin complicaciones. GuauGuauCars conecta conductores pet-friendly con dueños de mascotas. Beta privada disponible pronto." />
+  <meta name="theme-color" content="#44A682" />
+
+  <!-- ── Open Graph ── -->
+  <meta property="og:title"       content="GuauGuauCars – Viajes compartidos para mascotas" />
+  <meta property="og:description" content="La primera plataforma 100% pensada para viajar con tu perro." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://guauguaucars.com" />
+  <!-- <meta property="og:image"    content="assets/images/og-cover.jpg" /> -->
+
+  <!-- ── Tailwind (Play CDN → cambiar a build en producción) ── -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // ── Colores corporativos GuauGuauCars (AppColors.dart) ──
+            brand:        '#44A682',   // accentGreen
+            'brand-dark': '#358A6B',   // accentGreen ~10% darker
+            'brand-light':'#5DC49A',   // accentGreen ~15% lighter
+            'deep-teal':  '#3B5954',   // deepTeal
+
+            // ── Override slate → Material Design grey (neutral, sin tinte azul) ──
+            // Alinea bg/surface/border con darkBackground y darkSurface de AppColors
+            slate: {
+              50:  '#FAFAFA', // lightBackground
+              100: '#F5F5F5',
+              200: '#E0E0E0', // darkOnSurface
+              300: '#BDBDBD',
+              400: '#9E9E9E',
+              500: '#757575',
+              600: '#424242',
+              700: '#333333',
+              800: '#252525',
+              900: '#1E1E1E', // darkSurface
+              950: '#121212', // darkBackground
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- ── Estilos custom ── -->
+  <link rel="stylesheet" href="css/custom.css" />
+
+  <!-- ── Inter ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+  <!-- ════════════════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════════════ -->
+  <nav id="navbar"
+       class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 navbar-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 group" aria-label="GuauGuauCars inicio">
+          <div class="bg-white rounded-full p-0.5 shadow-sm group-hover:shadow-brand/30 transition-shadow">
+            <img
+              src="assets/images/Logo Guauguaucar-05.png"
+              alt="GuauGuauCars"
+              class="h-10 w-10 rounded-full object-contain"
+            />
+          </div>
+          <span class="font-black text-lg tracking-tight text-white hidden sm:block">GuauGuauCars</span>
+        </a>
+
+        <!-- Links desktop -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#como-funciona" class="text-slate-400 hover:text-white transition-colors">Cómo funciona</a>
+          <a href="#protectoras"   class="text-slate-400 hover:text-white transition-colors">Protectoras</a>
+          <a href="#apoya"         class="text-slate-400 hover:text-white transition-colors">Apoya el proyecto</a>
+          <a href="#contacto"
+             class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-2 rounded-full transition-colors">
+            Unirme a la Beta
+          </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button id="menu-btn"
+                class="md:hidden text-slate-400 hover:text-white p-2 rounded-lg transition-colors"
+                aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="#como-funciona" class="block text-slate-300 hover:text-white py-2 transition-colors">Cómo funciona</a>
+      <a href="#protectoras"   class="block text-slate-300 hover:text-white py-2 transition-colors">Protectoras</a>
+      <a href="#apoya"         class="block text-slate-300 hover:text-white py-2 transition-colors">Apoya el proyecto</a>
+      <a href="#contacto"
+         class="block bg-brand text-white font-semibold px-5 py-3 rounded-xl text-center hover:bg-brand-dark transition-colors">
+        Unirme a la Beta
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="gradient-hero relative overflow-hidden min-h-screen flex items-center">
+
+    <!-- Decoración fondo -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40  w-96 h-96 bg-brand/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-brand/5  rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 pt-28 relative z-10 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+
+        <!-- ── Texto ── -->
+        <div class="text-center lg:text-left">
+
+          <span class="inline-flex items-center gap-2 bg-brand/15 border border-brand/30 text-brand text-sm font-semibold px-4 py-2 rounded-full mb-8">
+            <span class="w-2 h-2 bg-brand rounded-full animate-pulse"></span>
+            Beta privada · Próximamente
+          </span>
+
+          <h1 class="text-4xl sm:text-5xl xl:text-6xl font-black leading-[1.1] text-white mb-6">
+            La primera plataforma de viajes compartidos
+            <span class="text-brand"> pensada al 100% para tu mascota</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            ¿Tu perro no cabe en el metro? ¿El bus no lo acepta?
+            GuauGuauCars conecta <strong class="text-slate-200">conductores pet-friendly</strong>
+            con dueños de mascotas para viajar seguros, cómodos y felices. 🐶
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#contacto"
+               class="btn-pulse bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-brand/25 text-center">
+              🐾 Únete a la Beta Privada
+            </a>
+            <a href="#protectoras"
+               class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-8 py-4 rounded-2xl text-lg transition-all duration-300 border border-slate-700 hover:border-slate-600 text-center">
+              Soy una protectora →
+            </a>
+          </div>
+
+          <!-- Social proof -->
+          <div class="flex items-center gap-4 mt-10 justify-center lg:justify-start">
+            <div class="flex -space-x-2">
+              <div class="w-9 h-9 rounded-full bg-brand/40   border-2 border-slate-900 flex items-center justify-center text-sm">🐕</div>
+              <div class="w-9 h-9 rounded-full bg-emerald-500/40 border-2 border-slate-900 flex items-center justify-center text-sm">🐩</div>
+              <div class="w-9 h-9 rounded-full bg-purple-500/40  border-2 border-slate-900 flex items-center justify-center text-sm">🦮</div>
+            </div>
+            <p class="text-slate-400 text-sm">
+              Únete a los primeros <strong class="text-white">150+ interesados</strong> en la lista de espera
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Prototipo interactivo ── -->
+        <div class="flex flex-col items-center gap-5" id="phone-mockup">
+
+          <!-- Etiqueta flotante: "prueba el prototipo" -->
+          <div class="flex items-center gap-2 bg-slate-800/80 border border-slate-700 rounded-full px-4 py-2 text-xs text-slate-400 backdrop-blur-sm">
+            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+            Prototipo interactivo · Toca para navegar
+          </div>
+
+          <!-- Phone wrapper -->
+          <div class="phone-wrapper float-phone">
+            <!-- Botones físicos -->
+            <div class="phone-btn phone-btn-vol-up"></div>
+            <div class="phone-btn phone-btn-vol-dn"></div>
+            <div class="phone-btn phone-btn-power"></div>
+
+            <!-- Marco del teléfono -->
+            <div class="phone-frame">
+              <!-- Dynamic Island -->
+              <div class="dynamic-island"></div>
+
+              <!-- Pantalla -->
+              <div class="phone-screen-inner" id="phone-screen-inner">
+                <!-- JS inyecta aquí las .app-screen -->
+                <div id="app-screens"></div>
+                <!-- Reflejo cristal -->
+                <div class="screen-glass"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dots de progreso -->
+          <div id="step-dots" class="flex items-center gap-2"></div>
+
+          <!-- Info del paso actual -->
+          <div class="demo-step-wrapper">
+            <div id="step-label" class="step-label-badge"></div>
+            <div id="step-title" class="step-title-text mt-1"></div>
+            <div id="step-desc"  class="step-desc-text mt-1"></div>
+
+            <!-- Flechas manuales -->
+            <div class="flex justify-center gap-3 mt-4">
+              <button id="demo-prev" class="demo-nav-btn" aria-label="Pantalla anterior">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+              <button id="demo-next" class="demo-nav-btn" aria-label="Pantalla siguiente">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <!-- /prototipo -->
+
+      </div>
+    </div>
+
+    <!-- Scroll down -->
+    <a href="#como-funciona"
+       class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-500 hover:text-brand transition-colors animate-bounce">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </a>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CÓMO FUNCIONA
+  ════════════════════════════════════════════════════════════ -->
+  <section id="como-funciona" class="bg-slate-900 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-16 fade-in">
+        <span class="text-brand font-semibold text-sm uppercase tracking-widest">Así de simple</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 mb-4">Cómo funciona GuauGuauCars</h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Tres pasos para que tú y tu perro lleguen a donde necesitan. Sin estrés, sin rechazo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="benefit-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8 text-center fade-in">
+          <div class="w-16 h-16 bg-brand/15 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">🔍</div>
+          <div class="text-brand font-black text-5xl mb-3">01</div>
+          <h3 class="text-xl font-bold text-white mb-3">Busca un viaje</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Introduce tu origen, destino y la fecha. Filtra por conductores que aceptan mascotas
+            y elige el que mejor se adapte a ti.
+          </p>
+        </div>
+
+        <div class="benefit-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8 text-center fade-in" style="transition-delay:.1s">
+          <div class="w-16 h-16 bg-brand/15 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">🤝</div>
+          <div class="text-brand font-black text-5xl mb-3">02</div>
+          <h3 class="text-xl font-bold text-white mb-3">Reserva al instante</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Confirma tu plaza, comparte el perfil de tu mascota y coordina los detalles
+            directamente con el conductor.
+          </p>
+        </div>
+
+        <div class="benefit-card bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8 text-center fade-in" style="transition-delay:.2s">
+          <div class="w-16 h-16 bg-brand/15 rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">🐶</div>
+          <div class="text-brand font-black text-5xl mb-3">03</div>
+          <h3 class="text-xl font-bold text-white mb-3">¡Viajad juntos!</h3>
+          <p class="text-slate-400 leading-relaxed">
+            Sube al coche, disfruta del viaje con tu mascota y puntúa la experiencia
+            para ayudar a otros dueños.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       ALIANZAS Y PROTECTORAS
+  ════════════════════════════════════════════════════════════ -->
+  <section id="protectoras" class="bg-slate-950 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Texto -->
+        <div class="fade-in">
+          <span class="text-brand font-semibold text-sm uppercase tracking-widest">Para protectoras y asociaciones</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 mb-6">
+            Tu herramienta de<br/>
+            <span class="text-brand">transporte solidario</span>
+          </h2>
+          <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+            Sabemos que uno de los mayores dolores de cabeza de las protectoras es el
+            <strong class="text-white">traslado de animales</strong> para acogidas, adopciones
+            o urgencias veterinarias. GuauGuauCars es la solución.
+          </p>
+
+          <div class="space-y-5 mb-10">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">✅</div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Plataforma gratuita para traslados de protectoras</h4>
+                <p class="text-slate-400 text-sm">Sin costes de comisión para movimientos organizados por asociaciones registradas.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">📍</div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Red de conductores verificados y pet-friendly</h4>
+                <p class="text-slate-400 text-sm">Conductores comprometidos con el bienestar animal, evaluados por la comunidad.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">📣</div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Visibilidad para tu protectora en la plataforma</h4>
+                <p class="text-slate-400 text-sm">Tu asociación aparece en nuestro directorio, llegando a miles de amantes de los animales.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">🤝</div>
+              <div>
+                <h4 class="font-bold text-white mb-1">Alianza win-win desde el día uno</h4>
+                <p class="text-slate-400 text-sm">Vosotros resolvéis vuestra logística; nosotros ganamos visibilidad y credibilidad. Juntos crecemos.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contacto"
+             class="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-brand/25">
+            🏠 Colabora como Protectora
+          </a>
+        </div>
+
+        <!-- Tarjeta Protectora Aliada -->
+        <div class="fade-in">
+          <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-3xl p-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-56 h-56 bg-brand/8 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10">
+              <!-- Logo login como imagen de marca en la tarjeta -->
+              <div class="bg-white rounded-2xl p-4 inline-block mb-5 shadow-lg">
+                <img
+                  src="assets/images/logo-login.jpg"
+                  alt="GuauGuauCars Protectoras"
+                  class="h-16 w-auto object-contain"
+                />
+              </div>
+
+              <h3 class="text-2xl font-black text-white mb-4">Protectora Aliada</h3>
+              <p class="text-slate-400 mb-6 leading-relaxed">
+                Las primeras <strong class="text-brand">20 protectoras aliadas</strong> obtendrán
+                acceso prioritario, badge especial en la plataforma y participación directa
+                en el desarrollo de las funcionalidades para asociaciones.
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-slate-900/60 rounded-xl p-4 text-center">
+                  <div class="text-3xl font-black text-brand">0€</div>
+                  <div class="text-slate-400 text-xs mt-1">Coste para protectoras</div>
+                </div>
+                <div class="bg-slate-900/60 rounded-xl p-4 text-center">
+                  <div class="text-3xl font-black text-emerald-400">24h</div>
+                  <div class="text-slate-400 text-xs mt-1">Tiempo de respuesta</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-sm text-slate-400">
+                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                Plazas limitadas · Primero en llegar, primero en colaborar
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CROWDFUNDING — OCULTO POR DEFECTO
+       Para activar: quitar la clase "hidden" de la sección
+       o desde consola: document.getElementById('apoya').classList.remove('hidden')
+  ════════════════════════════════════════════════════════════ -->
+  <section id="apoya" class="hidden bg-slate-900 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-6 fade-in">
+        <span class="text-brand font-semibold text-sm uppercase tracking-widest">Financiación colectiva</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 mb-4">Apoya el proyecto</h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          GuauGuauCars busca <strong class="text-white">4.000 € – 5.000 €</strong> para dar el
+          salto definitivo: servidores, seguro y el primer gran empujón de marketing.
+        </p>
+      </div>
+
+      <!-- Barra de progreso -->
+      <div class="max-w-xl mx-auto mb-16 fade-in">
+        <div class="flex justify-between text-sm text-slate-400 mb-2">
+          <!-- TODO: actualizar con datos reales de la campaña -->
+          <span><strong class="text-white">0 €</strong> recaudados</span>
+          <span>Objetivo: <strong class="text-white">4.500 €</strong></span>
+        </div>
+        <div class="h-3 bg-slate-800 rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-brand to-brand-light rounded-full" style="width:0%"></div>
+        </div>
+        <p class="text-center text-slate-500 text-sm mt-2">Campaña no iniciada · Regístrate para ser el primero</p>
+      </div>
+
+      <!-- Tiers -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="tier-card bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
+          <div class="text-4xl mb-3">🏅</div>
+          <div class="text-3xl font-black text-white mb-1">10 €</div>
+          <div class="text-brand font-semibold text-sm mb-4">Fundador/a</div>
+          <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Insignia "Fundador/a" permanente</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Acceso prioritario a la Beta</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Tu nombre en los créditos</li>
+          </ul>
+          <a href="#contacto" class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+            Apoyar con 10 €
+          </a>
+        </div>
+
+        <div class="tier-card bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
+          <div class="text-4xl mb-3">🐾</div>
+          <div class="text-3xl font-black text-white mb-1">25 €</div>
+          <div class="text-brand font-semibold text-sm mb-4">Compañero/a</div>
+          <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Todo lo del nivel anterior</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Pegatina oficial GuauGuauCars</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Prioridad en soporte</li>
+          </ul>
+          <a href="#contacto" class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+            Apoyar con 25 €
+          </a>
+        </div>
+
+        <div class="tier-card featured bg-slate-800/50 border-2 border-brand rounded-2xl p-6 text-center mt-4 sm:mt-0">
+          <div class="text-4xl mb-3">⭐</div>
+          <div class="text-3xl font-black text-white mb-1">50 €</div>
+          <div class="text-brand font-semibold text-sm mb-4">VIP Sin Comisiones</div>
+          <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Todo lo del nivel anterior</li>
+            <li class="flex items-center gap-2 text-white font-medium"><span class="text-brand">★</span> 12 meses SIN comisiones</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Badge VIP en tu perfil</li>
+          </ul>
+          <a href="#contacto" class="block w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition-colors text-sm shadow-lg shadow-brand/25">
+            Apoyar con 50 €
+          </a>
+        </div>
+
+        <div class="tier-card bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
+          <div class="text-4xl mb-3">🎒</div>
+          <div class="text-3xl font-black text-white mb-1">100 €</div>
+          <div class="text-brand font-semibold text-sm mb-4">Kit Viajero Guau</div>
+          <ul class="text-slate-400 text-sm space-y-2 mb-6 text-left">
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Todo lo del nivel anterior</li>
+            <li class="flex items-center gap-2 text-white font-medium"><span class="text-brand">★</span> Cinturón homologado para mascotas</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Unboxing con sorpresa 🎁</li>
+          </ul>
+          <a href="#contacto" class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+            Apoyar con 100 €
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       FORMULARIO DE CAPTACIÓN
+       Motor: Formspree — https://formspree.io
+       Migración a Firebase: cambiar el `action` del form
+       a una Cloud Function o usar el SDK de Firestore directamente.
+       PASOS:
+         1. Crear cuenta en formspree.io
+         2. Crear un nuevo Form
+         3. Reemplazar YOUR_FORMSPREE_ID en el atributo action
+  ════════════════════════════════════════════════════════════ -->
+  <section id="contacto" class="bg-slate-950 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Texto -->
+        <div class="fade-in">
+          <span class="text-brand font-semibold text-sm uppercase tracking-widest">Lista de espera</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 mb-6">
+            Sé de los primeros en<br/>
+            <span class="text-brand">entrar a la Beta Privada</span>
+          </h2>
+          <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+            Déjanos tu correo y te avisaremos en cuanto abramos la Beta.
+            Sin spam, solo la info que importa. Lo prometemos. 🐾
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 text-slate-400">
+              <span class="text-brand text-xl">📧</span>
+              <span>Te avisamos cuando abramos la Beta</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-400">
+              <span class="text-brand text-xl">🏠</span>
+              <span>Protectoras: coordinar alianza directamente</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-400">
+              <span class="text-brand text-xl">🚗</span>
+              <span>Conductores: registrarse como pet-friendly</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-400">
+              <span class="text-brand text-xl">🔒</span>
+              <span>Tus datos, seguros. Sin spam. Nunca.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="fade-in">
+          <div class="bg-slate-800/50 border border-slate-700 rounded-3xl p-8">
+            <form id="lead-form"
+                  action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+                  method="POST"
+                  class="space-y-5">
+
+              <div>
+                <label for="nombre" class="block text-sm font-semibold text-slate-300 mb-2">
+                  Nombre <span class="text-brand">*</span>
+                </label>
+                <input type="text" id="nombre" name="nombre" required
+                  placeholder="Tu nombre o el de tu asociación"
+                  class="w-full bg-slate-900 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-semibold text-slate-300 mb-2">
+                  Email <span class="text-brand">*</span>
+                </label>
+                <input type="email" id="email" name="email" required
+                  placeholder="tu@email.com"
+                  class="w-full bg-slate-900 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
+                />
+              </div>
+
+              <div>
+                <label for="tipo" class="block text-sm font-semibold text-slate-300 mb-2">
+                  ¿Cómo te defines?
+                </label>
+                <select id="tipo" name="tipo"
+                  class="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected>Selecciona una opción</option>
+                  <option value="dueno-mascota">🐶 Dueño/a de mascota</option>
+                  <option value="conductor">🚗 Conductor/a pet-friendly</option>
+                  <option value="protectora">🏠 Protectora / Asociación</option>
+                  <option value="veterinaria">🏥 Clínica veterinaria</option>
+                  <option value="peluqueria">✂️ Peluquería canina</option>
+                  <option value="otro">💬 Otro / Me explico en los comentarios</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="mensaje" class="block text-sm font-semibold text-slate-300 mb-2">
+                  Cuéntanos algo <span class="text-slate-500 font-normal">(opcional)</span>
+                </label>
+                <textarea id="mensaje" name="mensaje" rows="3"
+                  placeholder="¿Eres una protectora con necesidades específicas? ¿Un conductor con muchas plazas? ¡Cuéntanos!"
+                  class="w-full bg-slate-900 border border-slate-700 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <input type="checkbox" id="rgpd" name="rgpd" required
+                  class="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-900 text-brand focus:ring-brand cursor-pointer flex-shrink-0"
+                />
+                <label for="rgpd" class="text-xs text-slate-400 cursor-pointer leading-relaxed">
+                  Acepto que GuauGuauCars almacene mis datos para contactarme sobre la Beta Privada.
+                  Sin spam. Puedes darte de baja en cualquier momento.
+                </label>
+              </div>
+
+              <button type="submit"
+                class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-2xl text-lg transition-all duration-300 hover:scale-105 shadow-lg shadow-brand/25 mt-2">
+                🐾 ¡Apúntame a la Beta!
+              </button>
+
+              <!-- Honeypot anti-spam -->
+              <input type="text" name="_gotcha" style="display:none" />
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════ -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
+        <!-- Logo + tagline -->
+        <div>
+          <a href="#" class="inline-block mb-4" aria-label="GuauGuauCars inicio">
+            <div class="bg-white rounded-2xl p-2 shadow-sm hover:shadow-brand/20 transition-shadow inline-block">
+              <img
+                src="assets/images/Logo Guauguaucar-07.png"
+                alt="GuauGuauCars"
+                class="h-14 w-auto object-contain"
+              />
+            </div>
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+            La primera plataforma de viajes compartidos diseñada 100%
+            para dueños de mascotas y conductores pet-friendly.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">Navegación</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#como-funciona" class="hover:text-brand transition-colors">Cómo funciona</a></li>
+            <li><a href="#protectoras"   class="hover:text-brand transition-colors">Protectoras</a></li>
+            <li><a href="#apoya"         class="hover:text-brand transition-colors">Apoya el proyecto</a></li>
+            <li><a href="#contacto"      class="hover:text-brand transition-colors">Únete a la Beta</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contacto</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <!-- TODO: reemplazar con email real -->
+            <li>
+              <a href="mailto:hola@guauguaucars.com" class="hover:text-brand transition-colors flex items-center gap-2">
+                <span>📧</span> hola@guauguaucars.com
+              </a>
+            </li>
+            <!-- TODO: RRSS cuando estén activas
+            <li><a href="#" class="hover:text-brand transition-colors flex items-center gap-2"><span>📷</span> Instagram</a></li>
+            <li><a href="#" class="hover:text-brand transition-colors flex items-center gap-2"><span>🎵</span> TikTok</a></li>
+            -->
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-slate-500 text-sm">© 2025 GuauGuauCars. Hecho con 🐾 en España.</p>
+        <div class="flex gap-6 text-sm text-slate-500">
+          <!-- TODO: crear páginas legales -->
+          <a href="#" class="hover:text-slate-300 transition-colors">Aviso legal</a>
+          <a href="#" class="hover:text-slate-300 transition-colors">Privacidad</a>
+          <a href="#" class="hover:text-slate-300 transition-colors">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ayuda y Soporte - GuauGuauCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#44A682",
+              "background-light": "#f6f8f7",
+              "background-dark": "#11211b",
+              "header-bg": "#3B5954",
+              "card-bg": "#FFFFFF",
+              "text-primary": "#111715",
+              "text-secondary": "#64877b",
+              "border-color": "#dce5e2"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.5rem",
+                "lg": "0.75rem",
+                "xl": "1rem",
+                "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light font-display">
+<div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col bg-background-light group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 items-center bg-header-bg px-4 pb-2 pt-4 justify-between">
+<button class="text-white flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Ayuda y Soporte</h1>
+<div class="size-10"></div> <!-- Spacer for centering title -->
+</header>
+<main class="flex-1">
+<!-- Search Bar -->
+<div class="bg-header-bg px-4 pb-4 pt-2">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full bg-white/20">
+<div class="text-white flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-2xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-white/70 px-4 pl-2 text-base font-normal leading-normal" placeholder="Buscar en preguntas frecuentes" value=""/>
+</div>
+</label>
+</div>
+<!-- FAQs Section -->
+<section class="mt-6 px-4">
+<h2 class="text-text-primary text-xl font-bold leading-tight tracking-[-0.015em] mb-3">Preguntas Frecuentes (FAQs)</h2>
+<div class="flex flex-col gap-3">
+<details class="flex flex-col rounded-xl border border-border-color bg-card-bg px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-4 py-2">
+<p class="text-text-primary text-base font-medium leading-normal">¿Cómo funciona el proceso de reserva?</p>
+<span class="material-symbols-outlined text-text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="text-text-secondary text-sm font-normal leading-normal pb-2 pt-1">
+                            Para reservar, simplemente selecciona tu origen, destino y la fecha del viaje. Luego, proporciona los detalles de tu mascota y elige un transportista verificado. Una vez confirmado, podrás comunicarte directamente con el conductor.
+                        </p>
+</details>
+<details class="flex flex-col rounded-xl border border-border-color bg-card-bg px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-4 py-2">
+<p class="text-text-primary text-base font-medium leading-normal">¿Qué medidas de seguridad toman para mi mascota?</p>
+<span class="material-symbols-outlined text-text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="text-text-secondary text-sm font-normal leading-normal pb-2 pt-1">
+                            Todos nuestros transportistas están verificados y siguen estrictos protocolos de seguridad. Los vehículos están acondicionados para el transporte de mascotas, garantizando ventilación y comodidad. Además, puedes seguir el viaje en tiempo real.
+                        </p>
+</details>
+<details class="flex flex-col rounded-xl border border-border-color bg-card-bg px-4 py-2 group">
+<summary class="flex cursor-pointer items-center justify-between gap-4 py-2">
+<p class="text-text-primary text-base font-medium leading-normal">¿Cuáles son las opciones de pago?</p>
+<span class="material-symbols-outlined text-text-primary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="text-text-secondary text-sm font-normal leading-normal pb-2 pt-1">
+                            Aceptamos pagos con tarjeta de crédito/débito y a través de plataformas de pago seguras. El pago se procesa una vez que el servicio de transporte se ha completado exitosamente para tu tranquilidad.
+                        </p>
+</details>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="mt-8 px-4">
+<h2 class="text-text-primary text-xl font-bold leading-tight tracking-[-0.015em] mb-3">Contacto de Soporte</h2>
+<p class="text-text-secondary text-sm mb-4">Si no encuentras respuesta a tu pregunta, no dudes en contactarnos. Nuestro equipo te responderá lo antes posible.</p>
+<div class="bg-card-bg p-4 rounded-xl border border-border-color">
+<form action="#" class="space-y-4" method="POST">
+<div>
+<label class="block text-sm font-medium text-text-primary mb-1" for="name">Nombre</label>
+<input class="form-input block w-full rounded-lg border-border-color bg-background-light py-2 px-3 text-text-primary placeholder:text-text-secondary/70 focus:border-primary focus:ring-primary text-sm" id="name" name="name" placeholder="Tu nombre completo" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-primary mb-1" for="email">Email</label>
+<input class="form-input block w-full rounded-lg border-border-color bg-background-light py-2 px-3 text-text-primary placeholder:text-text-secondary/70 focus:border-primary focus:ring-primary text-sm" id="email" name="email" placeholder="tu@email.com" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-primary mb-1" for="message">Mensaje</label>
+<textarea class="form-textarea block w-full rounded-lg border-border-color bg-background-light py-2 px-3 text-text-primary placeholder:text-text-secondary/70 focus:border-primary focus:ring-primary text-sm" id="message" name="message" placeholder="Escribe tu consulta aquí..." rows="4"></textarea>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-base font-bold text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" type="submit">
+<span class="material-symbols-outlined">send</span>
+                            Enviar Mensaje
+                        </button>
+</form>
+</div>
+</section>
+<!-- Legal Information Section -->
+<section class="mt-8 px-4 pb-8">
+<h2 class="text-text-primary text-xl font-bold leading-tight tracking-[-0.015em] mb-3">Información Legal</h2>
+<div class="flex flex-col gap-2">
+<a class="flex items-center justify-between rounded-xl bg-card-bg p-4 border border-border-color hover:bg-background-light transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<span class="text-text-primary font-medium">Términos y Condiciones</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</a>
+<a class="flex items-center justify-between rounded-xl bg-card-bg p-4 border border-border-color hover:bg-background-light transition-colors" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">policy</span>
+<span class="text-text-primary font-medium">Política de Privacidad</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary">chevron_right</span>
+</a>
+</div>
+</section>
+</main>
+</div>
+</body></html>

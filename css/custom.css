@@ -1,0 +1,316 @@
+/* ============================================
+   GuauGuauCars — Custom CSS
+   Paleta corporativa: AppColors (Flutter)
+     accentGreen  #44A682
+     deepTeal     #3B5954
+     darkBg       #121212
+     darkSurface  #1E1E1E
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+html { scroll-behavior: smooth; }
+
+/* ── Gradiente hero: dark con tinte teal sutil ── */
+.gradient-hero {
+  background: linear-gradient(135deg, #121212 0%, #182820 55%, #121212 100%);
+}
+
+/* ── Navbar blur ── */
+.navbar-blur {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ══════════════════════════════════════════
+   PHONE MOCKUP
+══════════════════════════════════════════ */
+
+.phone-wrapper {
+  position: relative;
+  width: 280px;
+  flex-shrink: 0;
+}
+
+/* Botones físicos (decorativos) */
+.phone-btn {
+  position: absolute;
+  background: linear-gradient(to bottom, #333333, #1E1E1E);
+  border-radius: 3px;
+  z-index: 0;
+}
+.phone-btn-vol-up  { left: -5px; top: 96px;  width: 5px; height: 30px; border-radius: 2px 0 0 2px; }
+.phone-btn-vol-dn  { left: -5px; top: 138px; width: 5px; height: 30px; border-radius: 2px 0 0 2px; }
+.phone-btn-power   { right: -5px; top: 118px; width: 5px; height: 48px; border-radius: 0 2px 2px 0; }
+
+/* Marco del teléfono */
+.phone-frame {
+  position: relative;
+  width: 280px;
+  height: 586px;
+  background: linear-gradient(145deg, #252525 0%, #121212 100%);
+  border-radius: 50px;
+  border: 2px solid #333333;
+  box-shadow:
+    0 0 0 1px #121212,
+    0 50px 120px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(68, 166, 130, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 108px;
+  height: 30px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  gap: 4px;
+}
+.dynamic-island::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #111;
+  border-radius: 50%;
+  border: 1.5px solid #1f1f1f;
+}
+.dynamic-island::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #0d1f14;
+  border-radius: 50%;
+  border: 1.5px solid #1a3a22;
+  box-shadow: 0 0 4px rgba(68, 166, 130, 0.6);
+}
+
+/* Zona de pantalla */
+.phone-screen-inner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+/* Reflejo de cristal */
+.screen-glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 35%,
+    transparent 65%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  z-index: 5;
+  pointer-events: none;
+  border-radius: 50px;
+}
+
+/* ── Screens ── */
+.app-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  will-change: transform, opacity;
+}
+.app-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* ── Tap ripple ── */
+.tap-ripple {
+  position: absolute;
+  pointer-events: none;
+  z-index: 15;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: translate(-50%, -50%) scale(0);
+  animation: tap-ripple-anim 0.65s ease-out forwards;
+}
+@keyframes tap-ripple-anim {
+  0%   { transform: translate(-50%, -50%) scale(0);   opacity: 0.8; }
+  40%  { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+}
+
+/* ── Step info ── */
+.demo-step-wrapper {
+  width: 280px;
+  text-align: center;
+}
+.step-label-badge {
+  display: inline-block;
+  background: rgba(68, 166, 130, 0.15);
+  border: 1px solid rgba(68, 166, 130, 0.3);
+  color: #44A682;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  transition: all 0.3s ease;
+}
+.step-title-text {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+  transition: all 0.3s ease;
+  min-height: 22px;
+}
+.step-desc-text {
+  font-size: 12px;
+  color: #757575;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  min-height: 36px;
+}
+
+/* Dots del demo */
+.demo-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #333333;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.demo-dot.active {
+  background: #44A682;
+  width: 18px;
+  border-radius: 4px;
+}
+
+/* Nav arrows */
+.demo-nav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #1E1E1E;
+  border: 1px solid #333333;
+  color: #9E9E9E;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.demo-nav-btn:hover {
+  background: #44A682;
+  border-color: #44A682;
+  color: white;
+}
+.demo-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ══════════════════════════════════════════
+   SECTIONS
+══════════════════════════════════════════ */
+
+.benefit-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(68, 166, 130, 0.12);
+}
+
+/* Tier cards */
+.tier-card { transition: transform 0.3s ease; }
+.tier-card:hover { transform: translateY(-4px); }
+.tier-card.featured {
+  border-color: #44A682;
+  position: relative;
+}
+.tier-card.featured::before {
+  content: '⭐ Más popular';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #44A682;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* CTA pulse — verde corporativo */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(68, 166, 130, 0.45); }
+  50%       { box-shadow: 0 0 0 14px rgba(68, 166, 130, 0); }
+}
+.btn-pulse { animation: pulse-green 2.5s infinite; }
+
+/* Float */
+@keyframes float-phone {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.float-phone { animation: float-phone 4s ease-in-out infinite; }
+
+/* Fade-in on scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #388E3C;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(56, 142, 60, 0.3);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+}
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #121212; }
+::-webkit-scrollbar-thumb { background: #333333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #44A682; }

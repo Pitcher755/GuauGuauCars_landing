@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crear Cuenta - GuauGuauCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#44A682", // Updated primary color
+              "background-light": "#f6f8f7",
+              "background-dark": "#151d1a", // Simulating the #3B5954 feel for the form
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<header class="flex items-center p-4">
+<button class="text-white flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center -ml-12">Crear Cuenta</h2>
+</header>
+<main class="flex flex-1 flex-col px-4 pt-4">
+<h1 class="text-white tracking-light text-[32px] font-bold leading-tight text-left pb-6">Únete a GuauGuauCars</h1>
+<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-y-3">
+<p class="text-white text-base font-medium leading-normal pb-1">Selecciona tu rol</p>
+<div class="grid grid-cols-2 gap-3 rounded-lg bg-[#1e2422] p-1">
+<button class="flex items-center justify-center gap-2 rounded-md bg-primary py-3 text-sm font-bold text-background-dark shadow-sm transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span>Pasajero</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-md py-3 text-sm font-medium text-white/70 transition-colors hover:bg-white/10">
+<span class="material-symbols-outlined">directions_car</span>
+<span>Conductor</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-y-3">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Correo Electrónico</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#414e4a] bg-[#1e2422] focus:border-primary h-14 placeholder:text-[#a3b2ad] p-[15px] text-base font-normal leading-normal transition-colors duration-300" placeholder="tucorreo@ejemplo.com" type="email" value=""/>
+</label>
+</div>
+<div class="flex flex-col gap-y-3">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Contraseña</p>
+<div class="flex w-full flex-1 items-stretch">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#414e4a] bg-[#1e2422] focus:border-primary h-14 placeholder:text-[#a3b2ad] p-[15px] border-r-0 pr-2 text-base font-normal leading-normal transition-colors duration-300" placeholder="Crea tu contraseña" type="password" value=""/>
+<div class="text-[#a3b2ad] flex border border-[#414e4a] bg-[#1e2422] items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+<span class="material-symbols-outlined text-2xl cursor-pointer">visibility_off</span>
+</div>
+</div>
+</label>
+<p class="text-white/70 text-sm font-normal leading-normal px-1">Debe contener al menos 8 caracteres, una mayúscula y un número.</p>
+</div>
+<div class="flex flex-col gap-y-3">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-white text-base font-medium leading-normal pb-2">Confirmar Contraseña</p>
+<div class="flex w-full flex-1 items-stretch">
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#414e4a] bg-[#1e2422] focus:border-primary h-14 placeholder:text-[#a3b2ad] p-[15px] border-r-0 pr-2 text-base font-normal leading-normal transition-colors duration-300" placeholder="Confirma tu contraseña" type="password" value=""/>
+<div class="text-[#a3b2ad] flex border border-[#414e4a] bg-[#1e2422] items-center justify-center pr-[15px] rounded-r-lg border-l-0">
+<span class="material-symbols-outlined text-2xl cursor-pointer">visibility_off</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="flex-grow"></div> 
+<div class="flex flex-col items-center gap-4 py-6">
+<p class="text-white/70 text-center text-sm">
+                    Al registrarte, aceptas nuestros <a class="font-semibold text-primary hover:underline" href="#">Términos y Condiciones</a> y <a class="font-semibold text-primary hover:underline" href="#">Política de Privacidad</a>.
+                </p>
+<button class="flex w-full items-center justify-center rounded-full bg-primary p-4 text-center font-bold text-background-dark h-14 text-base transition-transform active:scale-95">Registrarse</button>
+</div>
+<div class="flex items-center justify-center pb-8 pt-2">
+<p class="text-white">¿Ya tienes una cuenta? <a class="font-bold text-primary hover:underline" href="#">Inicia sesión</a></p>
+</div>
+</main>
+</div>
+
+</body></html>

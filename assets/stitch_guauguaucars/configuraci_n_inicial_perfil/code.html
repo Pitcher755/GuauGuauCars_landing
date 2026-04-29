@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configuración de Perfil - GuauGuauCars</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#44A682", // Custom primary color from the user request
+              "background-light": "#f5f5f5", // Light Gray as requested
+              "background-dark": "#11211b",
+              "text-dark-teal": "#3B5954", // Custom text color from the user request
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start text-text-dark-teal dark:text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-text-dark-teal dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">GuauGuauCars</h2>
+</div>
+<div class="flex flex-col h-full flex-grow px-4">
+<!-- Headline Text -->
+<h1 class="text-text-dark-teal dark:text-white tracking-tight text-[32px] font-bold leading-tight text-center pb-3 pt-6">¡Bienvenido! Cuéntanos quién eres.</h1>
+<!-- Avatar/Profile Picture Section -->
+<div class="flex flex-col items-center justify-center py-8">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover bg-[#e0e0e0] dark:bg-gray-700 text-gray-500 dark:text-gray-400 rounded-full flex items-center justify-center size-32" data-alt="Placeholder for user profile picture">
+<span class="material-symbols-outlined !text-6xl">person</span>
+</div>
+<!-- FAB for Upload Photo -->
+<button class="absolute bottom-0 right-0 flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined !text-2xl">photo_camera</span>
+</button>
+</div>
+</div>
+<!-- Text Field for Full Name -->
+<div class="flex max-w-full flex-wrap items-end gap-4 py-3">
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-text-dark-teal dark:text-gray-300 text-base font-medium leading-normal pb-2">Nombre Completo</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-dark-teal dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dce5e2] dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Introduce tu nombre" value=""/>
+</label>
+</div>
+<!-- Role Selection Section -->
+<div class="py-4">
+<p class="text-text-dark-teal dark:text-gray-300 text-base font-medium leading-normal pb-3">Tu rol principal</p>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 p-4 h-14 rounded-lg border-2 border-primary bg-primary text-white font-bold text-base transition-colors">
+<span class="material-symbols-outlined">pets</span>
+                        Pasajero
+                    </button>
+<button class="flex items-center justify-center gap-2 p-4 h-14 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-text-dark-teal dark:text-gray-300 font-bold text-base transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
+<span class="material-symbols-outlined">drive_eta</span>
+                        Conductor
+                    </button>
+</div>
+</div>
+</div>
+<!-- Spacer to push button to the bottom -->
+<div class="flex-grow"></div>
+<!-- Primary Action Button -->
+<div class="px-4 pb-8 pt-4 sticky bottom-0 bg-background-light dark:bg-background-dark">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em]">
+                Guardar Perfil
+            </button>
+</div>
+</div>
+</body></html>
