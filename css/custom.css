@@ -287,6 +287,12 @@ html { scroll-behavior: smooth; }
   transform: translateY(0);
 }
 
+/* ── Paw icons en botones — fuerza el color del texto (emoji no hereda CSS color) ── */
+.btn-paw {
+  display: inline-block;
+  filter: brightness(0) invert(1); /* negro → blanco para que coincida con text-white */
+}
+
 /* ── Toast ── */
 .toast {
   position: fixed;
