@@ -300,7 +300,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
-  // ── Formulario (Formspree) ───────────────────────────────────
+// ── Formulario ──────────────────────────────────────────────
+  const FIREBASE_FUNCTION_URL =
+    'https://us-central1-guauguaucars-app-prod.cloudfunctions.net/submitBetaLead';
+
   const form  = document.getElementById('lead-form');
   const toast = document.getElementById('toast');
 
@@ -311,17 +314,27 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.disabled  = true;
     btn.innerHTML = '<span class="opacity-70">Enviando...</span>';
 
+    const fd = new FormData(form);
+    const payload = {
+      name:    (fd.get('nombre')  ?? '').toString().trim(),
+      email:   (fd.get('email')   ?? '').toString().trim(),
+      type:    (fd.get('tipo')    ?? '').toString().trim(),
+      message: (fd.get('mensaje') ?? '').toString().trim(),
+      rgpd:    fd.get('rgpd') !== null,
+    };
+
     try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
+      const res  = await fetch(FIREBASE_FUNCTION_URL, {
+        method:  'POST',
+        body:    JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
       });
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
         showToast('✅ ¡Apuntado! Te avisaremos cuando abramos la Beta.');
         form.reset();
       } else {
-        showToast('❌ Algo falló. Inténtalo de nuevo.', true);
+        showToast(`❌ ${data.error || 'Algo falló. Inténtalo de nuevo.'}`, true);
       }
     } catch {
       showToast('❌ Sin conexión. Inténtalo de nuevo.', true);
