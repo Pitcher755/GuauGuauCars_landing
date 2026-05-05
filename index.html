@@ -622,7 +622,15 @@
             <form id="lead-form"
                   action="https://formspree.io/f/YOUR_FORMSPREE_ID"
                   method="POST"
+                  data-email="hola@guauguaucars.com"
                   class="space-y-5">
+              <!--
+                PENDIENTE: configurar Formspree
+                1. Crear cuenta en formspree.io con hola@guauguaucars.com
+                2. Crear un nuevo Form → obtener el ID
+                3. Reemplazar YOUR_FORMSPREE_ID en el atributo action
+                   (o migrar a Firebase Cloud Function cuando esté listo el backend)
+              -->
 
               <div>
                 <label for="nombre" class="block text-sm font-semibold text-slate-300 mb-2">
@@ -737,7 +745,7 @@
         <div>
           <h4 class="text-white font-semibold mb-4">Contacto</h4>
           <ul class="space-y-2 text-sm text-slate-400">
-            <!-- TODO: reemplazar con email real -->
+            <!-- TODO: reemplazar con email real cuando esté creado -->
             <li>
               <a href="mailto:hola@guauguaucars.com" class="hover:text-brand transition-colors flex items-center gap-2">
                 <span>📧</span> hola@guauguaucars.com
