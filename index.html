@@ -521,7 +521,7 @@
        Para activar: quitar la clase "hidden" de la sección
        o desde consola: document.getElementById('apoya').classList.remove('hidden')
   ════════════════════════════════════════════════════════════ -->
-  <section id="apoya" class="hidden bg-slate-900 py-24">
+  <section id="apoya" class="bg-slate-900 py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div class="text-center mb-6 fade-in">
@@ -558,9 +558,9 @@
             <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Acceso prioritario a la Beta</li>
             <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Tu nombre en los créditos</li>
           </ul>
-          <a href="#contacto" class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+          <button data-coming-soon class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm cursor-pointer">
             Apoyar con 10 €
-          </a>
+          </button>
         </div>
 
         <div class="tier-card bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
@@ -572,9 +572,9 @@
             <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Pegatina oficial GuauGuauCars</li>
             <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Prioridad en soporte</li>
           </ul>
-          <a href="#contacto" class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+          <button data-coming-soon class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm cursor-pointer">
             Apoyar con 25 €
-          </a>
+          </button>
         </div>
 
         <div class="tier-card featured bg-slate-800/50 border-2 border-brand rounded-2xl p-6 text-center mt-4 sm:mt-0">
@@ -586,9 +586,9 @@
             <li class="flex items-center gap-2 text-white font-medium"><span class="text-brand">★</span> 12 meses SIN comisiones</li>
             <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Badge VIP en tu perfil</li>
           </ul>
-          <a href="#contacto" class="block w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition-colors text-sm shadow-lg shadow-brand/25">
+          <button data-coming-soon class="block w-full bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition-colors text-sm shadow-lg shadow-brand/25 cursor-pointer">
             Apoyar con 50 €
-          </a>
+          </button>
         </div>
 
         <div class="tier-card bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
@@ -600,9 +600,9 @@
             <li class="flex items-center gap-2 text-white font-medium"><span class="text-brand">★</span> Cinturón homologado para mascotas</li>
             <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Unboxing con sorpresa 🎁</li>
           </ul>
-          <a href="#contacto" class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+          <button data-coming-soon class="block w-full bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm cursor-pointer">
             Apoyar con 100 €
-          </a>
+          </button>
         </div>
 
       </div>
@@ -825,6 +825,29 @@
 
   <!-- Toast -->
   <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Modal: Próximamente (sección #apoya) -->
+  <div id="coming-soon-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title">
+    <!-- Backdrop -->
+    <div id="coming-soon-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+    <!-- Panel -->
+    <div class="relative bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
+      <div class="text-5xl mb-4">🚧</div>
+      <h3 id="coming-soon-title" class="text-xl font-black text-white mb-2">Próximamente</h3>
+      <p class="text-slate-400 text-sm leading-relaxed mb-6">
+        La campaña de financiación aún no está activa.<br/>
+        Apúntate a la lista de espera y te avisamos cuando arranque.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#contacto" id="coming-soon-cta" class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-3 rounded-xl text-sm transition-colors">
+          Unirme a la lista de espera
+        </a>
+        <button id="coming-soon-close" class="text-slate-400 hover:text-white text-sm px-5 py-3 rounded-xl border border-slate-700 hover:border-slate-500 transition-colors">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

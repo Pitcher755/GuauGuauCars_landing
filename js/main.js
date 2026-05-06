@@ -361,4 +361,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Modal "Próximamente" (sección #apoya) ────────────────────
+  const comingSoonModal    = document.getElementById('coming-soon-modal');
+  const comingSoonBackdrop = document.getElementById('coming-soon-backdrop');
+  const comingSoonClose    = document.getElementById('coming-soon-close');
+  const comingSoonCta      = document.getElementById('coming-soon-cta');
+
+  function openComingSoon() {
+    comingSoonModal.classList.remove('hidden');
+    comingSoonModal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeComingSoon() {
+    comingSoonModal.classList.add('hidden');
+    comingSoonModal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-coming-soon]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      openComingSoon();
+    });
+  });
+
+  comingSoonClose?.addEventListener('click', closeComingSoon);
+  comingSoonBackdrop?.addEventListener('click', closeComingSoon);
+  comingSoonCta?.addEventListener('click', closeComingSoon); // cierra y deja que el smooth scroll actúe
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeComingSoon();
+  });
+
 });
