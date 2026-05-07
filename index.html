@@ -4,17 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ── SEO ── -->
+  <!-- ── SEO básico ── -->
   <title>GuauGuauCars – La primera plataforma de viajes compartidos para tu mascota</title>
-  <meta name="description" content="Viaja en coche con tu perro sin complicaciones. GuauGuauCars conecta conductores pet-friendly con dueños de mascotas. Beta privada disponible pronto." />
+  <meta name="description" content="Viaja en coche con tu perro o gato sin complicaciones. GuauGuauCars conecta conductores pet-friendly con familias con mascotas en España. Únete a la beta." />
+  <meta name="keywords" content="viajar con perro en coche, transporte mascotas, app mascotas, conductor pet-friendly, viajes compartidos mascotas, taxi mascotas, blablacar mascotas, viajar con gato, traslado animales" />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#44A682" />
+  <link rel="canonical" href="https://guauguaucars.com/" />
 
   <!-- ── Open Graph ── -->
-  <meta property="og:title"       content="GuauGuauCars – Viajes compartidos para mascotas" />
-  <meta property="og:description" content="La primera plataforma 100% pensada para viajar con tu perro." />
+  <meta property="og:title"       content="GuauGuauCars – Viajes compartidos para mascotas en España" />
+  <meta property="og:description" content="La primera app de viajes compartidos 100% pet-friendly. Conductores verificados para viajar seguro con tu perro, gato o cualquier mascota. Beta privada disponible pronto." />
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://guauguaucars.com" />
-  <!-- <meta property="og:image"    content="assets/images/og-cover.jpg" /> -->
+  <meta property="og:url"         content="https://guauguaucars.com/" />
+  <meta property="og:site_name"   content="GuauGuauCars" />
+  <meta property="og:locale"      content="es_ES" />
+  <!-- Descomentar cuando exista la imagen OG (1200×630 px recomendado) -->
+  <!-- <meta property="og:image"        content="https://guauguaucars.com/assets/images/og-cover.jpg" /> -->
+  <!-- <meta property="og:image:width"  content="1200" /> -->
+  <!-- <meta property="og:image:height" content="630" /> -->
+  <!-- <meta property="og:image:alt"    content="GuauGuauCars – Viajes compartidos para mascotas" /> -->
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:site"        content="@guauguaucars" />
+  <meta name="twitter:title"       content="GuauGuauCars – Viajes compartidos para mascotas" />
+  <meta name="twitter:description" content="La primera app 100% pet-friendly. Conductores verificados para viajar seguro con tu perro, gato o cualquier mascota." />
+  <!-- <meta name="twitter:image"       content="https://guauguaucars.com/assets/images/og-cover.jpg" /> -->
 
   <!-- ── Tailwind (Play CDN → cambiar a build en producción) ── -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -60,6 +76,62 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- ── JSON-LD Structured Data ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://guauguaucars.com/#website",
+        "url": "https://guauguaucars.com/",
+        "name": "GuauGuauCars",
+        "description": "La primera plataforma de viajes compartidos para mascotas",
+        "inLanguage": "es-ES",
+        "publisher": { "@id": "https://guauguaucars.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://guauguaucars.com/#organization",
+        "name": "GuauGuauCars",
+        "url": "https://guauguaucars.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://guauguaucars.com/assets/images/Logo Guauguaucar-05.png",
+          "width": 512,
+          "height": 512
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "hola@guauguaucars.com",
+          "contactType": "customer support",
+          "availableLanguage": "Spanish"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://guauguaucars.com/#app",
+        "name": "GuauGuauCars",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "App de viajes compartidos para viajar con mascotas. Conecta conductores pet-friendly con familias con mascotas para trayectos seguros, cómodos y sin estrés.",
+        "url": "https://guauguaucars.com/",
+        "inLanguage": "es-ES",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "publisher": { "@id": "https://guauguaucars.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
@@ -377,7 +449,7 @@
               <div class="bg-white rounded-2xl p-4 inline-block mb-5 shadow-lg">
                 <img
                   src="assets/images/logo-login.jpg"
-                  alt="GuauGuauCars Protectoras"
+                  alt="GuauGuauCars – Programa Protectora Aliada, viajes solidarios para acogidas y adopciones"
                   class="h-16 w-auto object-contain"
                 />
               </div>
