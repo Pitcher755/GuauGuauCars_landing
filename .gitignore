@@ -13,6 +13,11 @@ Thumbs.db
 firebase-debug.log
 .firebaserc
 
-# Env / secrets
+# Env / secrets — NEVER commit keys, tokens, or credentials
 .env
-.env.local
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+service-account*.json
