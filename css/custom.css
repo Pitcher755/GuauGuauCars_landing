@@ -398,6 +398,63 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
   }
 
+  /* ── Variantes de opacidad (bg-slate-X/Y) — Tailwind genera clases separadas ── */
+  /* Cards principales: cómo funciona, apoya, formulario */
+  .bg-slate-800\/50 {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05) !important;
+  }
+  /* Cards placeholder protectoras aliadas */
+  .bg-slate-800\/40 {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05) !important;
+  }
+  /* Hover de las placeholders */
+  .hover\:bg-slate-800\/60:hover {
+    background-color: #f0fdf4 !important;
+  }
+  /* Hero badge + badge similar */
+  .bg-slate-800\/80 {
+    background-color: rgba(68, 166, 130, 0.10) !important;
+  }
+  /* Stats "20 primeras protectoras": de negro a tinte de marca */
+  .bg-slate-900\/60 {
+    background-color: rgba(68, 166, 130, 0.08) !important;
+  }
+  /* Menú móvil */
+  .bg-slate-900\/98 {
+    background-color: rgba(250, 250, 250, 0.98) !important;
+  }
+
+  /* ── Variantes de opacidad en bordes ── */
+  .border-slate-700\/50 { border-color: rgba(0,0,0,0.08) !important; }
+
+  /* ── Gradientes (CSS vars de Tailwind) ── */
+  /* Tarjeta "Protectora Aliada": de oscuro a blanco con tinte verde suave */
+  .from-slate-800 { --tw-gradient-from: #FFFFFF !important; }
+  .to-slate-900   { --tw-gradient-to:   #f0fdf4 !important; }
+  /* Header interno de las placeholders: tinte de marca muy sutil */
+  .from-slate-700\/40 { --tw-gradient-from: rgba(68, 166, 130, 0.07) !important; }
+  .to-slate-800\/40   { --tw-gradient-to:   rgba(68, 166, 130, 0.03) !important; }
+
+  /* ── Íconos en placeholders de protectoras ── */
+  .bg-slate-700\/80 { background-color: rgba(68, 166, 130, 0.12) !important; }
+
+  /* ── Bordes dashed en placeholders — que se vean con color de marca ── */
+  .border-dashed.border-slate-700 {
+    border-color: rgba(68, 166, 130, 0.35) !important;
+  }
+  .hover\:border-brand\/60:hover {
+    border-color: rgba(68, 166, 130, 0.60) !important;
+  }
+
+  /* ── Elevación en cards de secciones ── */
+  .benefit-card { box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05); }
+  .tier-card    { box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05); }
+
+  /* ── Texto adicional ── */
+  .text-slate-500 { color: #9E9E9E !important; }
+
   /* ── Anillos de foco (accesibilidad) ── */
   *:focus-visible { outline-color: #44A682; }
 
