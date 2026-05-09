@@ -339,58 +339,78 @@ html { scroll-behavior: smooth; }
     background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 55%, #f0fdf4 100%) !important;
   }
 
-  /* ── Tailwind background overrides ── */
+  /* ── Tailwind backgrounds sólidos ── */
   .bg-slate-950 { background-color: #FAFAFA !important; }
-  .bg-slate-900 { background-color: #F5F5F5 !important; }
+  .bg-slate-900 { background-color: #FFFFFF !important; }
   .bg-slate-800 { background-color: #FFFFFF !important; }
-  .bg-slate-700 { background-color: #E0E0E0 !important; }
+  .bg-slate-700 { background-color: rgba(68, 166, 130, 0.12) !important; }
 
-  /* ── Texto — override general primero, excepciones después ── */
+  /* ── Fondos de sección por ID — alternando blanco / tinte marca ── */
+  #como-funciona,
+  #protectoras-aliadas,
+  #contacto   { background-color: rgba(68, 166, 130, 0.05) !important; }
+
+  #protectoras,
+  #apoya      { background-color: #FFFFFF !important; }
+
+  /* ── Texto ── */
   .text-white     { color: #212121 !important; }
   .text-slate-100 { color: #212121 !important; }
-  .text-slate-200 { color: #424242 !important; }
-  .text-slate-300 { color: #616161 !important; }
-  .text-slate-400 { color: #757575 !important; }
+  .text-slate-200 { color: #2d2d2d !important; }
+  .text-slate-300 { color: #424242 !important; }
+  .text-slate-400 { color: #5a6e68 !important; } /* teal-gris — contrasta bien sobre fondos verdes */
+  .text-slate-500 { color: #6b8078 !important; }
 
-  /* Restaurar texto blanco en fondos de marca (después para ganar por orden) */
+  /* Restaurar texto blanco en fondos de marca */
   .bg-brand,
   .bg-brand *,
   [class*="bg-brand"] { color: #FFFFFF !important; }
 
+  /* text-emerald-400 es verde muy claro — en modo claro necesita oscurecer */
+  .text-emerald-400 { color: #0f7a54 !important; }
+
+  /* ── Badge "Beta privada · Próximamente" ── */
+  /* bg-brand/15 (verde claro) + text-brand (#44A682) = bajo contraste → texto oscuro */
+  .bg-brand\/15.text-brand { color: #1a4a3a !important; }
+
+  /* ── Chip "Prototipo interactivo" — dark pill para que el texto blanco funcione ── */
+  /* Selector de 3 clases → mayor especificidad que .bg-slate-800\/80 (1 clase) */
+  .bg-slate-800\/80.text-slate-400.backdrop-blur-sm {
+    background-color: rgba(26, 74, 58, 0.88) !important;
+    border-color: rgba(68, 166, 130, 0.50) !important;
+    color: #FFFFFF !important;
+  }
+
   /* ── Bordes ── */
-  .border-slate-700                { border-color: rgba(0,0,0,0.10) !important; }
-  .border-slate-800                { border-color: rgba(0,0,0,0.06) !important; }
-  .border-slate-600                { border-color: rgba(0,0,0,0.14) !important; }
-  .divide-slate-700 > * + *        { border-color: rgba(0,0,0,0.10) !important; }
+  .border-slate-700           { border-color: rgba(68, 166, 130, 0.22) !important; }
+  .border-slate-800           { border-color: rgba(68, 166, 130, 0.14) !important; }
+  .border-slate-600           { border-color: rgba(68, 166, 130, 0.30) !important; }
+  .divide-slate-700 > * + *   { border-color: rgba(68, 166, 130, 0.22) !important; }
 
   /* ── Formulario ── */
   input, select, textarea {
     background-color: #FFFFFF !important;
     color: #212121 !important;
-    border-color: rgba(0,0,0,0.14) !important;
+    border-color: rgba(68, 166, 130, 0.35) !important;
   }
   input::placeholder, textarea::placeholder { color: #9E9E9E !important; }
 
-  /* ── Componentes custom con colores hardcoded ── */
+  /* ── Componentes custom ── */
   .step-title-text { color: #212121; }
-  .step-desc-text  { color: #616161; }
+  .step-desc-text  { color: #5a6e68; }
 
   .demo-nav-btn {
     background: #FFFFFF;
-    border-color: rgba(0,0,0,0.12);
+    border-color: rgba(68, 166, 130, 0.20);
     color: #616161;
   }
-
-  .demo-dot { background: #BDBDBD; }
+  .demo-dot { background: rgba(68, 166, 130, 0.40); }
 
   /* ── Scrollbar ── */
   ::-webkit-scrollbar-track { background: #F5F5F5; }
-  ::-webkit-scrollbar-thumb { background: #BDBDBD; }
+  ::-webkit-scrollbar-thumb { background: rgba(68, 166, 130, 0.40); }
 
-  /* ── Modal / overlays ── */
-  .bg-slate-900 { background-color: #FFFFFF !important; }
-
-  /* ── Navbar scrolled (clase añadida por JS) ── */
+  /* ── Navbar scrolled ── */
   #navbar.bg-white\/95 {
     background-color: rgba(250, 250, 250, 0.95) !important;
   }
@@ -399,82 +419,90 @@ html { scroll-behavior: smooth; }
   }
 
   /* ════════════════════════════════════════════════════════════
-     CARDS EN MODO CLARO — tintes del color de marca #44A682
-     Texto oscuro garantiza contraste WCAG AA sobre estos fondos
+     CARDS — tintes del color de marca #44A682
+     Texto oscuro (#212121 / #5a6e68) garantiza contraste WCAG AA
      ════════════════════════════════════════════════════════════ */
 
-  /* ── Cards principales (Cómo funciona, Apoya, Formulario) ── */
-  /* Tailwind genera clases separadas para cada variante de opacidad */
+  /* Cards principales (Cómo funciona, tier-cards, formulario) */
   .bg-slate-800\/50 {
-    background-color: rgba(68, 166, 130, 0.08) !important;
-    border: 1px solid rgba(68, 166, 130, 0.22) !important;
-    box-shadow: none !important;
+    background-color: rgba(68, 166, 130, 0.12) !important;
+    border: 1px solid rgba(68, 166, 130, 0.30) !important;
   }
 
-  /* ── Cards placeholder protectoras aliadas ── */
+  /* Cards placeholder protectoras aliadas */
   .bg-slate-800\/40 {
-    background-color: rgba(68, 166, 130, 0.07) !important;
-    border: 1px solid rgba(68, 166, 130, 0.20) !important;
-    box-shadow: none !important;
-  }
-
-  /* ── Hover de cards placeholder ── */
-  .hover\:bg-slate-800\/60:hover {
-    background-color: rgba(68, 166, 130, 0.14) !important;
-  }
-
-  /* ── Hero badge / chips ── */
-  .bg-slate-800\/80 {
-    background-color: rgba(68, 166, 130, 0.14) !important;
-  }
-
-  /* ── Cajas de stats "20 primeras protectoras" ── */
-  .bg-slate-900\/60 {
     background-color: rgba(68, 166, 130, 0.10) !important;
-    border: 1px solid rgba(68, 166, 130, 0.25) !important;
+    border: 1px solid rgba(68, 166, 130, 0.28) !important;
   }
 
-  /* ── Menú móvil — neutro, no verde ── */
+  /* Hover placeholders */
+  .hover\:bg-slate-800\/60:hover {
+    background-color: rgba(68, 166, 130, 0.20) !important;
+  }
+
+  /* bg-slate-800/80 genérico (badges, chips sin backdrop-blur) */
+  .bg-slate-800\/80 {
+    background-color: rgba(68, 166, 130, 0.16) !important;
+  }
+
+  /* Stats "Sin comisión / 24h" dentro de Protectora Aliada */
+  .bg-slate-900\/60 {
+    background-color: rgba(68, 166, 130, 0.14) !important;
+    border: 1px solid rgba(68, 166, 130, 0.30) !important;
+  }
+  /* Texto dentro de los stats — mismo color familia, necesita oscurecer */
+  .bg-slate-900\/60 .text-brand    { color: #1a4a3a !important; }
+  .bg-slate-900\/60 .text-emerald-400 { color: #0f7a54 !important; }
+  .bg-slate-900\/60 .text-slate-400   { color: #3d5f56 !important; }
+
+  /* Menú móvil — neutro */
   .bg-slate-900\/98 {
     background-color: rgba(250, 250, 250, 0.98) !important;
   }
 
   /* ── Bordes con opacidad ── */
-  .border-slate-700\/50 { border-color: rgba(68, 166, 130, 0.22) !important; }
+  .border-slate-700\/50 { border-color: rgba(68, 166, 130, 0.28) !important; }
 
   /* ── Gradientes (CSS custom props de Tailwind) ── */
-  /* Tarjeta "Protectora Aliada": degradado verde marca */
-  .from-slate-800 { --tw-gradient-from: rgba(68, 166, 130, 0.12) !important; }
-  .to-slate-900   { --tw-gradient-to:   rgba(68, 166, 130, 0.04) !important; }
-  /* Header interno de las cards placeholder */
-  .from-slate-700\/40 { --tw-gradient-from: rgba(68, 166, 130, 0.14) !important; }
-  .to-slate-800\/40   { --tw-gradient-to:   rgba(68, 166, 130, 0.06) !important; }
+  /* Tarjeta "Protectora Aliada" */
+  .from-slate-800 { --tw-gradient-from: rgba(68, 166, 130, 0.16) !important; }
+  .to-slate-900   { --tw-gradient-to:   rgba(68, 166, 130, 0.06) !important; }
+  /* Header interno de las placeholders */
+  .from-slate-700\/40 { --tw-gradient-from: rgba(68, 166, 130, 0.18) !important; }
+  .to-slate-800\/40   { --tw-gradient-to:   rgba(68, 166, 130, 0.08) !important; }
 
-  /* ── Íconos dentro de las placeholders ── */
-  .bg-slate-700\/80 { background-color: rgba(68, 166, 130, 0.16) !important; }
+  /* ── Íconos en placeholders ── */
+  .bg-slate-700\/80 { background-color: rgba(68, 166, 130, 0.22) !important; }
 
-  /* ── Bordes dashed en placeholders ── */
+  /* ── Bordes dashed ── */
   .border-dashed.border-slate-700 {
-    border-color: rgba(68, 166, 130, 0.40) !important;
+    border-color: rgba(68, 166, 130, 0.42) !important;
   }
   .hover\:border-brand\/60:hover {
     border-color: rgba(68, 166, 130, 0.65) !important;
   }
 
-  /* ── Clases custom de cards — borde de marca para reforzar separación ── */
+  /* ── Clases custom de cards ── */
   .benefit-card {
-    background-color: rgba(68, 166, 130, 0.07) !important;
-    border: 1px solid rgba(68, 166, 130, 0.20) !important;
+    background-color: rgba(68, 166, 130, 0.12) !important;
+    border: 1px solid rgba(68, 166, 130, 0.30) !important;
   }
   .tier-card {
-    background-color: rgba(68, 166, 130, 0.07) !important;
-    border: 1px solid rgba(68, 166, 130, 0.20) !important;
+    background-color: rgba(68, 166, 130, 0.12) !important;
+    border: 1px solid rgba(68, 166, 130, 0.30) !important;
   }
 
-  /* ── Texto muted dentro de las cards (contraste garantizado sobre verde suave) ── */
-  .text-slate-500 { color: #5a7a6e !important; }
+  /* ── Botones dentro de tier-cards (bg-slate-700 text-white) ── */
+  .tier-card button {
+    background-color: #44A682 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+  }
+  .tier-card button:hover {
+    background-color: #3B9073 !important;
+  }
 
-  /* ── Anillos de foco (accesibilidad) ── */
+  /* ── Anillos de foco ── */
   *:focus-visible { outline-color: #44A682; }
 
 }
