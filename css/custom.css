@@ -505,4 +505,31 @@ html { scroll-behavior: smooth; }
   /* ── Anillos de foco ── */
   *:focus-visible { outline-color: #44A682; }
 
+  /* ── Navbar páginas legales (bg-slate-900/95 — clase distinta a bg-slate-900) ── */
+  .bg-slate-900\/95 {
+    background-color: rgba(250, 250, 250, 0.97) !important;
+    border-color: rgba(68, 166, 130, 0.20) !important;
+  }
+
+  /* ── Banner "Borrador preliminar" — amber sobre fondo claro ── */
+  /* En dark mode amber-900/40 + text-amber-300 funciona; en claro el texto desaparece */
+  .bg-amber-900\/40 {
+    background-color: rgba(251, 191, 36, 0.12) !important;
+  }
+  .border-amber-700\/50 { border-color: rgba(180, 83, 9, 0.35) !important; }
+  .text-amber-300        { color: #92400e !important; }       /* amber-800 — contrasta sobre fondo claro */
+
+  /* ── Separadores tabla cookies (border-slate-800/60) ── */
+  .border-slate-800\/60 { border-color: rgba(68, 166, 130, 0.18) !important; }
+
+  /* ── Card destacada en Términos (bg-slate-800/60) ── */
+  .bg-slate-800\/60 {
+    background-color: rgba(68, 166, 130, 0.10) !important;
+    border-color: rgba(68, 166, 130, 0.25) !important;
+  }
+
+  /* ── Hover links footer páginas legales ── */
+  /* hover:text-slate-300 genera clase distinta a text-slate-300 — sin override queda gris claro */
+  .hover\:text-slate-300:hover { color: #1a3a35 !important; }
+
 }
