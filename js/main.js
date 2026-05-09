@@ -267,15 +267,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Navbar scroll ──────────────────────────────────────────
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
+  const darkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function getNavBgClass() {
+    return darkMQ.matches ? 'bg-slate-900/95' : 'bg-white/95';
+  }
+
+  function updateNavbar() {
     if (window.scrollY > 60) {
-      navbar.classList.add('bg-slate-900/95', 'shadow-xl');
-      navbar.classList.remove('bg-transparent');
+      navbar.classList.remove('bg-slate-900/95', 'bg-white/95', 'bg-transparent');
+      navbar.classList.add(getNavBgClass(), 'shadow-xl');
     } else {
-      navbar.classList.remove('bg-slate-900/95', 'shadow-xl');
+      navbar.classList.remove('bg-slate-900/95', 'bg-white/95', 'shadow-xl');
       navbar.classList.add('bg-transparent');
     }
-  }, { passive: true });
+  }
+
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+
+  // Re-evaluar si el usuario cambia el modo del sistema con la landing abierta
+  darkMQ.addEventListener('change', () => {
+    if (window.scrollY > 60) {
+      navbar.classList.remove('bg-slate-900/95', 'bg-white/95');
+      navbar.classList.add(getNavBgClass());
+    }
+  });
 
   // ── Menú mobile ─────────────────────────────────────────────
   const menuBtn    = document.getElementById('menu-btn');

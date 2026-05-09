@@ -320,3 +320,85 @@ html { scroll-behavior: smooth; }
 ::-webkit-scrollbar-track { background: #121212; }
 ::-webkit-scrollbar-thumb { background: #333333; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #44A682; }
+
+/* ══════════════════════════════════════════
+   LIGHT MODE — prefers-color-scheme: light
+   El diseño base ES oscuro. Este bloque lo
+   invierte sólo cuando el sistema lo pide.
+══════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+
+  /* ── Base ── */
+  body {
+    background-color: #FAFAFA !important;
+    color: #212121;
+  }
+
+  /* ── Hero gradient ── */
+  .gradient-hero {
+    background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 55%, #f0fdf4 100%) !important;
+  }
+
+  /* ── Tailwind background overrides ── */
+  .bg-slate-950 { background-color: #FAFAFA !important; }
+  .bg-slate-900 { background-color: #F5F5F5 !important; }
+  .bg-slate-800 { background-color: #FFFFFF !important; }
+  .bg-slate-700 { background-color: #E0E0E0 !important; }
+
+  /* ── Texto — override general primero, excepciones después ── */
+  .text-white     { color: #212121 !important; }
+  .text-slate-100 { color: #212121 !important; }
+  .text-slate-200 { color: #424242 !important; }
+  .text-slate-300 { color: #616161 !important; }
+  .text-slate-400 { color: #757575 !important; }
+
+  /* Restaurar texto blanco en fondos de marca (después para ganar por orden) */
+  .bg-brand,
+  .bg-brand *,
+  [class*="bg-brand"] { color: #FFFFFF !important; }
+
+  /* ── Bordes ── */
+  .border-slate-700                { border-color: rgba(0,0,0,0.10) !important; }
+  .border-slate-800                { border-color: rgba(0,0,0,0.06) !important; }
+  .border-slate-600                { border-color: rgba(0,0,0,0.14) !important; }
+  .divide-slate-700 > * + *        { border-color: rgba(0,0,0,0.10) !important; }
+
+  /* ── Formulario ── */
+  input, select, textarea {
+    background-color: #FFFFFF !important;
+    color: #212121 !important;
+    border-color: rgba(0,0,0,0.14) !important;
+  }
+  input::placeholder, textarea::placeholder { color: #9E9E9E !important; }
+
+  /* ── Componentes custom con colores hardcoded ── */
+  .step-title-text { color: #212121; }
+  .step-desc-text  { color: #616161; }
+
+  .demo-nav-btn {
+    background: #FFFFFF;
+    border-color: rgba(0,0,0,0.12);
+    color: #616161;
+  }
+
+  .demo-dot { background: #BDBDBD; }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar-track { background: #F5F5F5; }
+  ::-webkit-scrollbar-thumb { background: #BDBDBD; }
+
+  /* ── Modal / overlays ── */
+  .bg-slate-900 { background-color: #FFFFFF !important; }
+
+  /* ── Navbar scrolled (clase añadida por JS) ── */
+  #navbar.bg-white\/95 {
+    background-color: rgba(250, 250, 250, 0.95) !important;
+  }
+  #navbar.shadow-xl {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+  }
+
+  /* ── Anillos de foco (accesibilidad) ── */
+  *:focus-visible { outline-color: #44A682; }
+
+}
