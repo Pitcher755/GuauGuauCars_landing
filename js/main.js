@@ -2,6 +2,12 @@
 // GuauGuauCars — main.js
 // ============================================
 
+// ── Analytics (GTM dataLayer) ───────────────────────────────────────
+function pushEvent(event, params = {}) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event, ...params });
+}
+
 // ── 1. Flujo de la app (7 pantallas en orden narrativo) ──────────────
 const APP_FLOW = [
   {
@@ -92,6 +98,7 @@ function initPhoneDemo() {
     dot.addEventListener('click', () => {
       if (i === demoIndex) return;
       pauseAutoplay();
+      pushEvent('demo_carousel_interacted', { action: 'dot', step: i + 1 });
       goToStep(i, i > demoIndex ? 'forward' : 'back');
     });
     dotsContainer.appendChild(dot);
@@ -111,11 +118,13 @@ function initPhoneDemo() {
   document.getElementById('demo-prev')?.addEventListener('click', () => {
     pauseAutoplay();
     const prev = (demoIndex - 1 + APP_FLOW.length) % APP_FLOW.length;
+    pushEvent('demo_carousel_interacted', { action: 'prev' });
     goToStep(prev, 'back');
   });
   document.getElementById('demo-next')?.addEventListener('click', () => {
     pauseAutoplay();
     const next = (demoIndex + 1) % APP_FLOW.length;
+    pushEvent('demo_carousel_interacted', { action: 'next' });
     goToStep(next, 'forward');
   });
 
@@ -255,8 +264,13 @@ function initSwipe() {
     const diff = startX - e.changedTouches[0].clientX;
     if (Math.abs(diff) < 40) return;
     pauseAutoplay();
-    if (diff > 0) goToStep((demoIndex + 1) % APP_FLOW.length, 'forward');
-    else          goToStep((demoIndex - 1 + APP_FLOW.length) % APP_FLOW.length, 'back');
+    if (diff > 0) {
+      pushEvent('demo_carousel_interacted', { action: 'swipe_next' });
+      goToStep((demoIndex + 1) % APP_FLOW.length, 'forward');
+    } else {
+      pushEvent('demo_carousel_interacted', { action: 'swipe_prev' });
+      goToStep((demoIndex - 1 + APP_FLOW.length) % APP_FLOW.length, 'back');
+    }
   }, { passive: true });
 }
 
@@ -304,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Inicializar demo del teléfono ───────────────────────────
   initPhoneDemo();
 
-  // ── Fade-in al scroll ────────────────────────────────────────
+  // ── Fade-in al scroll + section_visible ─────────────────────
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -316,12 +330,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 
+  // Observar secciones con id para section_visible (una sola vez por sesión)
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        pushEvent('section_visible', { section_id: entry.target.id });
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
 // ── Formulario ──────────────────────────────────────────────
   const FIREBASE_FUNCTION_URL =
     'https://us-central1-guauguaucars-app-prod.cloudfunctions.net/submitBetaLead';
 
   const form  = document.getElementById('lead-form');
   const toast = document.getElementById('toast');
+
+  // beta_form_started: primer foco en cualquier campo (una sola vez)
+  form?.addEventListener('focusin', () => {
+    pushEvent('beta_form_started');
+  }, { once: true });
+
+  // lead_type_selected: cuando el usuario elige su tipo
+  form?.querySelector('select[name="tipo"]')?.addEventListener('change', e => {
+    pushEvent('lead_type_selected', { lead_type: e.target.value });
+  });
 
   form?.addEventListener('submit', async e => {
     e.preventDefault();
@@ -347,12 +382,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
+        pushEvent('beta_form_submitted', { lead_type: payload.type });
         showToast('✅ ¡Apuntado! Te avisaremos cuando abramos la Beta.');
         form.reset();
       } else {
+        pushEvent('beta_form_error', { error_type: 'api', error_message: data.error || 'unknown' });
         showToast(`❌ ${data.error || 'Algo falló. Inténtalo de nuevo.'}`, true);
       }
     } catch {
+      pushEvent('beta_form_error', { error_type: 'network', error_message: 'no_connection' });
       showToast('❌ Sin conexión. Inténtalo de nuevo.', true);
     } finally {
       btn.disabled  = false;
@@ -387,6 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
     comingSoonModal.classList.remove('hidden');
     comingSoonModal.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    pushEvent('apoya_modal_opened');
   }
 
   function closeComingSoon() {
@@ -408,6 +447,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeComingSoon();
+  });
+
+  // ── Social links ─────────────────────────────────────────────
+  const SOCIAL_PATTERNS = {
+    'x.com': 'x',
+    'twitter.com': 'x',
+    'instagram.com': 'instagram',
+    'facebook.com': 'facebook',
+    'linkedin.com': 'linkedin',
+    'tiktok.com': 'tiktok',
+  };
+  document.querySelectorAll('a[href]').forEach(a => {
+    const match = Object.entries(SOCIAL_PATTERNS).find(([domain]) => a.href.includes(domain));
+    if (!match) return;
+    a.addEventListener('click', () => {
+      pushEvent('social_link_clicked', { platform: match[1] });
+    });
   });
 
 });
