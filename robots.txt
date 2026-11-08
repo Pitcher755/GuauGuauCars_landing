@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Las páginas legales llevan <meta name="robots" content="noindex, nofollow">.
+# No se bloquean aquí a propósito: si robots.txt las vetara, el rastreador no
+# podría leer ese noindex.
+
+Sitemap: https://guauguaucars.com/sitemap.xml

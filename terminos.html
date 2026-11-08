@@ -44,50 +44,68 @@
   <link rel="stylesheet" href="css/custom.css" />
 
   <!-- ── Google Tag Manager ── -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M38485DD');</script>
+  <!-- Google Tag Manager se carga solo tras el consentimiento (js/consent.js). -->
+  <script src="js/consent.js" defer></script>
   <!-- End Google Tag Manager -->
 </head>
 
 <body class="bg-slate-950 text-slate-300 antialiased font-sans">
 
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M38485DD"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Nav mínima -->
-  <nav class="bg-slate-900/95 border-b border-slate-800 px-4 py-4 sticky top-0 z-50">
-    <div class="max-w-3xl mx-auto flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 group" aria-label="GuauGuauCars inicio">
+  <!-- Nav principal — mismo componente que el resto del sitio (js/site.js) -->
+  <nav id="navbar"
+       class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 navbar-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <a href="index.html" class="flex items-center gap-2 group" aria-label="GuauGuauCars inicio">
           <div class="bg-white rounded-full p-0.5 shadow-sm group-hover:shadow-brand/30 transition-shadow">
-            <img
-              src="assets/images/Logo Guauguaucar-05.png"
-              alt="GuauGuauCars"
-              class="h-9 w-9 rounded-full object-contain"
-            />
+            <img src="assets/images/Logo Guauguaucar-05.png" alt="GuauGuauCars" class="h-10 w-10 rounded-full object-contain" />
           </div>
-          <span class="font-black text-lg tracking-tight text-white">GuauGuauCars</span>
+          <span class="font-black text-lg tracking-tight text-white hidden sm:block">GuauGuauCars</span>
         </a>
-      <a href="/" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-1">
-        <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-          <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10z" clip-rule="evenodd"/>
-        </svg>
-        Volver al inicio
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="index.html#como-funciona" class="text-slate-400 hover:text-white transition-colors">Cómo funciona</a>
+          <a href="index.html#protectoras"   class="text-slate-400 hover:text-white transition-colors">Protectoras</a>
+          <a href="recomendados.html"        class="text-slate-400 hover:text-white transition-colors">Recomendados</a>
+          <a href="index.html#contacto"
+             class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-2 rounded-full transition-colors">
+            Unirme a la Beta
+          </a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-slate-400 hover:text-white p-2 rounded-lg transition-colors" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="index.html#como-funciona" class="block text-slate-300 hover:text-white py-2 transition-colors">Cómo funciona</a>
+      <a href="index.html#protectoras"   class="block text-slate-300 hover:text-white py-2 transition-colors">Protectoras</a>
+      <a href="recomendados.html"        class="block text-slate-300 hover:text-white py-2 transition-colors">Recomendados</a>
+      <a href="index.html#contacto"
+         class="block bg-brand text-white font-semibold px-5 py-3 rounded-xl text-center hover:bg-brand-dark transition-colors">
+        Unirme a la Beta
       </a>
     </div>
   </nav>
 
-  <!-- Banner borrador -->
+  <!-- Espacio para la barra fija (antes el nav era sticky y ocupaba flujo) -->
+  <div class="h-16" aria-hidden="true"></div>
+
+  <!-- Aviso de estado del documento -->
   <div class="bg-amber-900/40 border-b border-amber-700/50 px-4 py-3">
     <p class="max-w-3xl mx-auto text-amber-300 text-sm text-center flex items-center justify-center gap-2">
       <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 flex-shrink-0">
         <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" clip-rule="evenodd"/>
       </svg>
-      <strong>Borrador preliminar</strong> — pendiente de revisión legal definitiva. Última actualización: mayo 2026.
+      <strong>Pendiente de cierre</strong> — faltan el NIF y el domicilio del titular y la revisión legal final. Última actualización: noviembre 2026.
     </p>
   </div>
 
@@ -96,128 +114,241 @@
 
     <header class="mb-12">
       <span class="text-brand font-semibold text-sm uppercase tracking-widest">Legal</span>
-      <h1 class="text-4xl font-black text-white mt-3 mb-4">Términos y Condiciones</h1>
+      <h1 class="text-4xl font-black text-white mt-3 mb-4">Aviso legal y condiciones de uso</h1>
       <p class="text-slate-400">
-        Bienvenido a GuauGuauCars. Al usar nuestra aplicación o servicios aceptas los términos
-        descritos a continuación. Lee este documento con atención.
+        Este documento identifica al titular del sitio, regula el uso de guauguaucars.com e informa
+        del estado real del proyecto y de los enlaces de afiliado. Las condiciones de la plataforma
+        descritas en el apartado 8 se aplicarán cuando el servicio abra al público.
       </p>
     </header>
 
     <div class="space-y-10">
 
-      <!-- Sección 1 -->
+      <!-- 1 -->
       <section>
         <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">1.</span> Aceptación de Términos
+          <span class="text-brand">1.</span> Datos identificativos del titular
+        </h2>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          En cumplimiento del artículo 10 de la Ley 34/2002 de Servicios de la Sociedad de la
+          Información y Comercio Electrónico (LSSI-CE):
+        </p>
+        <ul class="space-y-2 text-slate-400">
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">Titular:</strong> Javier Fernández Guerra, que opera bajo el nombre comercial GuauGuauCars.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">NIF:</strong> pendiente de completar.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">Domicilio:</strong> pendiente de completar, España.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">Correo de contacto:</strong> <a href="mailto:hola@guauguaucars.com" class="text-brand hover:underline">hola@guauguaucars.com</a></span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">Sitio web:</strong> https://guauguaucars.com</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">Actividad:</strong> desarrollo y explotación de una plataforma digital de viajes compartidos para personas que viajan con mascotas.</span></li>
+        </ul>
+      </section>
+
+      <!-- 2 -->
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-brand">2.</span> Objeto y ámbito
         </h2>
         <p class="text-slate-400 leading-relaxed">
-          Al acceder y usar GuauGuauCars, aceptas y acuerdas estar obligado por los términos y
-          disposiciones de este acuerdo. Si no estás de acuerdo con alguno de los términos aquí
-          expuestos, no debes utilizar el servicio.
+          Este aviso se aplica al sitio web guauguaucars.com y a los formularios y enlaces que
+          contiene. No regula el uso de la aplicación móvil, que tendrá sus propias condiciones
+          cuando esté disponible. El acceso al sitio es gratuito y no requiere registro.
         </p>
       </section>
 
-      <!-- Sección 2 -->
+      <!-- 3 -->
       <section>
         <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">2.</span> Descripción del Servicio
+          <span class="text-brand">3.</span> Estado del proyecto: beta privada
         </h2>
-        <p class="text-slate-400 leading-relaxed">
-          GuauGuauCars es una plataforma digital que conecta pasajeros que viajan con mascotas
-          con conductores pet-friendly para servicios de transporte compartido. La plataforma
-          actúa como intermediaria y no presta directamente el servicio de transporte.
+        <p class="text-slate-400 leading-relaxed mb-4">
+          GuauGuauCars <strong class="text-white">no está operativo todavía</strong>. El sitio es
+          informativo y de captación de personas interesadas en una beta privada a la que se accede
+          por invitación. No se ofrece, contrata ni cobra ningún servicio de transporte a través de
+          esta web, y no hay fechas de apertura garantizadas.
         </p>
-      </section>
-
-      <!-- Sección 3 -->
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">3.</span> Responsabilidades del Usuario
-        </h2>
-        <p class="text-slate-400 leading-relaxed">
-          Los usuarios deben proporcionar información veraz, completa y actualizada durante el
-          registro y en el uso del servicio. Cada usuario es responsable de cumplir con todas las
-          leyes y regulaciones locales aplicables a su uso de la plataforma, incluyendo las
-          normativas de transporte de animales vigentes en su comunidad autónoma.
-        </p>
-      </section>
-
-      <!-- Sección 4 -->
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">4.</span> Pago y Comisión de Plataforma
-        </h2>
-        <p class="text-slate-400 leading-relaxed">
-          Todos los pagos se procesan de forma segura a través de Stripe. GuauGuauCars cobra
-          una <strong class="text-white">comisión del 25%</strong> sobre el importe del viaje
-          en los trayectos completados. Esta comisión cubre el mantenimiento de la plataforma,
-          los costes de infraestructura y la mejora continua del servicio.
-        </p>
-        <div class="mt-4 bg-brand/10 border border-brand/25 rounded-xl p-4">
-          <p class="text-brand text-sm font-semibold mb-1">🎉 Usuarios Beta Fundadores</p>
+        <div class="bg-brand/10 border border-brand/25 rounded-xl p-4">
           <p class="text-slate-400 text-sm leading-relaxed">
-            Los usuarios que accedan a través del programa de Beta Fundadores disfrutarán de
-            condiciones especiales en la comisión de plataforma durante el período acordado,
-            según los términos específicos comunicados en el momento del registro.
-          </p>
-        </div>
-        <div class="mt-3 bg-slate-800/60 border border-slate-700 rounded-xl p-4">
-          <p class="text-slate-300 text-sm font-semibold mb-1">🏠 Protectoras y Refugios Aliados</p>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Las asociaciones de protección animal registradas en la plataforma como entidades
-            aliadas no abonan comisión de plataforma en los traslados organizados bajo su cuenta
-            institucional. Los honorarios del conductor y los gastos de pasarela de pago son
-            independientes y corren por cuenta del pasajero.
+            Dejar tus datos no crea ningún contrato, no reserva plaza y no genera obligación de
+            pago alguna. Solo te permite recibir información sobre la apertura de la beta y las
+            condiciones que se aplicarán entonces.
           </p>
         </div>
       </section>
 
-      <!-- Sección 5 -->
+      <!-- 4 -->
       <section>
         <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">5.</span> Limitación de Responsabilidad
+          <span class="text-brand">4.</span> Condiciones de uso del sitio
+        </h2>
+        <p class="text-slate-400 leading-relaxed mb-3">
+          Al navegar por este sitio te comprometes a:
+        </p>
+        <ul class="space-y-2 text-slate-400">
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>No utilizar el sitio con fines ilícitos ni contrarios a la buena fe.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>No introducir datos falsos, ni suplantar la identidad de terceros en los formularios.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>No intentar acceder a áreas restringidas, ni interferir en el funcionamiento del sitio o de sus sistemas de seguridad.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>No extraer contenido de forma masiva ni reutilizarlo sin autorización escrita.</span></li>
+        </ul>
+      </section>
+
+      <!-- 5 -->
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-brand">5.</span> Formulario de lista de espera
         </h2>
         <p class="text-slate-400 leading-relaxed">
-          GuauGuauCars actúa exclusivamente como plataforma de conexión entre usuarios.
-          No es responsable de los problemas, daños o perjuicios derivados de las interacciones
-          directas entre usuarios, ni de incidencias ocurridas durante el trayecto que sean
-          responsabilidad del conductor o del pasajero. Los conductores son profesionales
-          independientes y únicos responsables del servicio de transporte prestado.
+          El formulario recoge los datos que nos facilitas de forma voluntaria: nombre, correo
+          electrónico, teléfono si lo indicas, el tipo de perfil que eliges y un mensaje opcional.
+          Los usamos para gestionar la lista de espera y contactarte sobre la beta. El tratamiento
+          se detalla en la
+          <a href="privacidad.html" class="text-brand hover:underline">política de privacidad</a>,
+          donde también se explica cómo darte de baja o suprimir tus datos.
         </p>
       </section>
 
-      <!-- Sección 6 -->
+      <!-- 6 -->
       <section>
         <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">6.</span> Suspensión y Cancelación de Cuentas
+          <span class="text-brand">6.</span> Enlaces de afiliado de Amazon
         </h2>
+        <p class="text-slate-400 leading-relaxed mb-3">
+          La sección
+          <a href="recomendados.html" class="text-brand hover:underline">recomendados</a>
+          incluye enlaces de afiliado del Programa de Afiliados de Amazon. Como Asociado de Amazon,
+          GuauGuauCars obtiene ingresos por las compras adscritas que cumplen los requisitos
+          aplicables. El precio que pagas es el mismo que pagarías entrando directamente en Amazon.
+        </p>
+        <ul class="space-y-2 text-slate-400">
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>La compra se formaliza con Amazon, no con GuauGuauCars. La venta, el envío, la garantía y las devoluciones son responsabilidad de Amazon y del vendedor correspondiente.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>No publicamos precios propios ni imágenes de producto: el precio y la disponibilidad se muestran siempre en Amazon y pueden cambiar sin previo aviso.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span>La selección responde a nuestro criterio editorial. No todos los productos que existen en Amazon están recomendados, y ningún fabricante paga por aparecer.</span></li>
+        </ul>
+      </section>
+
+      <!-- 7 -->
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-brand">7.</span> Propiedad intelectual e industrial
+        </h2>
+        <p class="text-slate-400 leading-relaxed mb-3">
+          © 2026 Javier Fernández Guerra. Todos los derechos reservados. El código fuente de este
+          sitio es visible, pero <strong class="text-white">no es software libre</strong>: no se
+          autoriza su copia, modificación, distribución ni uso comercial, ni la creación de
+          productos derivados, salvo autorización escrita. Las condiciones completas están en el
+          archivo <code class="text-brand text-sm">LICENSE</code> del repositorio.
+        </p>
         <p class="text-slate-400 leading-relaxed">
-          GuauGuauCars se reserva el derecho de suspender o cancelar cuentas de usuario que
-          incumplan estos términos, realicen un uso fraudulento del servicio, o lleven a cabo
-          conductas que perjudiquen a otros usuarios o a la plataforma. Las suspensiones se
-          notificarán al correo electrónico registrado.
+          La marca <strong class="text-white">GuauGuauCars</strong>, su logotipo y el concepto de
+          plataforma de viajes compartidos para mascotas están protegidos. El nombre y la marca no
+          pueden usarse sin permiso. La mención de productos o marcas de terceros (incluida Amazon)
+          se hace a título informativo y pertenece a sus respectivos titulares.
         </p>
       </section>
 
-      <!-- Sección 7 -->
+      <!-- 8 -->
       <section>
         <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
-          <span class="text-brand">7.</span> Modificaciones
+          <span class="text-brand">8.</span> Condiciones de la plataforma (a su apertura)
+        </h2>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          Estas condiciones regirán cuando el servicio abra al público. Se publican ahora para que
+          sepas de antemano cómo funcionará.
+        </p>
+
+        <h3 class="text-white font-semibold mb-2">8.1. Descripción del servicio</h3>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          GuauGuauCars es una plataforma que pone en contacto a personas que viajan con mascotas con
+          conductores pet-friendly. Actúa como intermediaria tecnológica y no presta el transporte:
+          el servicio lo realiza el conductor, que es un profesional independiente y responsable del
+          trayecto.
+        </p>
+
+        <h3 class="text-white font-semibold mb-2">8.2. Precio, comisión y pagos</h3>
+        <p class="text-slate-400 leading-relaxed mb-3">
+          El conductor fija su precio y lo cobra íntegro. GuauGuauCars aplica un margen sobre ese
+          precio, que abona el pasajero, de modo que la comisión nunca se descuenta de lo que recibe
+          el conductor. Las cifras vigentes en la beta son:
+        </p>
+        <ul class="space-y-2 text-slate-400 mb-4">
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">25 %</strong> con carácter general.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">12,5 %</strong> para las familias con mascotas durante la beta.</span></li>
+          <li class="flex items-start gap-3"><span class="text-brand mt-1 flex-shrink-0">•</span><span><strong class="text-white">0 %</strong> para protectoras y asociaciones de protección animal registradas, en los traslados organizados bajo su cuenta institucional.</span></li>
+        </ul>
+        <p class="text-slate-400 leading-relaxed">
+          Los gastos de la pasarela de pago (Stripe) se calculan aparte y se muestran antes de
+          confirmar la reserva. El importe total siempre es visible antes de pagar. Los pagos se
+          procesan a través de Stripe; GuauGuauCars no almacena datos de tarjeta.
+        </p>
+
+        <h3 class="text-white font-semibold mt-6 mb-2">8.3. Responsabilidades del usuario</h3>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          Debes facilitar información veraz y actualizada, cumplir la normativa aplicable al
+          transporte de animales en tu comunidad autónoma, y tratar con respeto a los demás usuarios
+          y a los animales. La plataforma puede solicitar la documentación que exija la ley para el
+          transporte de mascotas.
+        </p>
+
+        <h3 class="text-white font-semibold mb-2">8.4. Limitación de responsabilidad</h3>
+        <p class="text-slate-400 leading-relaxed mb-4">
+          GuauGuauCars no responde de los daños derivados de la relación entre pasajero y conductor,
+          ni de las incidencias del trayecto que sean responsabilidad del conductor o del pasajero.
+          Nada en esta cláusula excluye la responsabilidad que la ley impone de forma imperativa,
+          en particular frente a consumidores.
+        </p>
+
+        <h3 class="text-white font-semibold mb-2">8.5. Suspensión de cuentas</h3>
+        <p class="text-slate-400 leading-relaxed">
+          Podemos suspender o cancelar cuentas que incumplan estas condiciones, hagan un uso
+          fraudulento del servicio o perjudiquen a otros usuarios o a la plataforma, notificándolo
+          al correo registrado.
+        </p>
+      </section>
+
+      <!-- 9 -->
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-brand">9.</span> Protección de datos
         </h2>
         <p class="text-slate-400 leading-relaxed">
-          GuauGuauCars se reserva el derecho de modificar estos términos en cualquier momento.
-          Los cambios sustanciales serán notificados a los usuarios con al menos 15 días de
-          antelación a través del correo electrónico registrado. El uso continuado del servicio
-          tras dicha notificación implica la aceptación de los nuevos términos.
+          El tratamiento de datos personales se rige por la
+          <a href="privacidad.html" class="text-brand hover:underline">política de privacidad</a>,
+          que forma parte de este aviso legal.
+        </p>
+      </section>
+
+      <!-- 10 -->
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-brand">10.</span> Modificaciones
+        </h2>
+        <p class="text-slate-400 leading-relaxed">
+          Podemos modificar este aviso para adaptarlo a cambios normativos o del servicio. La
+          versión vigente será siempre la publicada en esta página, con su fecha de actualización.
+          Los cambios sustanciales que afecten a la plataforma ya en funcionamiento se comunicarán
+          con al menos 15 días de antelación al correo registrado.
+        </p>
+      </section>
+
+      <!-- 11 -->
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span class="text-brand">11.</span> Legislación aplicable y resolución de conflictos
+        </h2>
+        <p class="text-slate-400 leading-relaxed">
+          Este aviso se rige por la legislación española. Si actúas como consumidor, puedes acudir a
+          los tribunales de tu domicilio y a la junta arbitral de consumo que corresponda; también
+          tienes a tu disposición la plataforma europea de resolución de litigios en línea. Si actúas
+          como empresa o profesional, las partes se someten a los tribunales del domicilio del
+          titular.
         </p>
       </section>
 
       <!-- Contacto -->
-      <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+      <section class="bg-slate-800/60 border border-slate-700 rounded-2xl p-6">
         <h2 class="text-lg font-bold text-white mb-2">¿Tienes dudas?</h2>
         <p class="text-slate-400 text-sm leading-relaxed">
-          Para cualquier consulta relacionada con estos términos, ponte en contacto con nosotros
-          en <a href="mailto:hola@guauguaucars.com" class="text-brand hover:underline">hola@guauguaucars.com</a>.
+          Para cualquier consulta sobre este aviso legal, escríbenos a
+          <a href="mailto:hola@guauguaucars.com" class="text-brand hover:underline">hola@guauguaucars.com</a>.
         </p>
       </section>
 
@@ -229,12 +360,14 @@
     <div class="max-w-3xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
       <p>© 2026 GuauGuauCars. Hecho con 🐾 en España.</p>
       <div class="flex gap-6">
-        <a href="/terminos.html" class="text-brand">Términos</a>
-        <a href="/privacidad.html" class="hover:text-slate-300 transition-colors">Privacidad</a>
-        <a href="/" class="hover:text-slate-300 transition-colors">Inicio</a>
+        <a href="terminos.html" class="text-brand">Términos</a>
+        <a href="privacidad.html" class="hover:text-slate-300 transition-colors">Privacidad</a>
+        <a href="index.html" class="hover:text-slate-300 transition-colors">Inicio</a>
       </div>
     </div>
   </footer>
 
+
+  <script src="js/site.js" defer></script>
 </body>
 </html>

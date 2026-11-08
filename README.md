@@ -2,7 +2,7 @@
 
 > La primera plataforma de viajes compartidos pensada al 100% para mascotas.
 
-Landing page de captación beta, crowdfunding y presentación del producto.
+Landing page de captación beta, presentación del producto y recomendados con enlaces de afiliado.
 Deployada en Firebase Hosting: **https://guauguaucars.com**
 
 ---
@@ -16,6 +16,7 @@ Deployada en Firebase Hosting: **https://guauguaucars.com**
 | Backend | Cloud Functions Gen2 Python 3.12 (repo `GuauGuauCars-Mobile`) |
 | Base de datos | Firestore |
 | Email | Resend (transaccional y masivo) |
+| Afiliados | Amazon Afiliados — ID de seguimiento `guauguaucars.com-21` |
 
 ---
 
@@ -27,8 +28,9 @@ Deployada en Firebase Hosting: **https://guauguaucars.com**
 | Cómo funciona | `#como-funciona` | 3 pasos del flujo de viaje |
 | Protectoras | `#protectoras` | Plazas colaboradoras para refugios |
 | Únete a la Beta | `#contacto` | Formulario de captación |
-| Apoya el proyecto | `#apoya` | Tiers de crowdfunding (modal "Próximamente") |
+| Recomendados | `#recomendados` | Entrada al catálogo de afiliados con CTA |
 | Footer | — | Nav, RRSS, T&C, Privacidad |
+| Recomendados (página) | `/recomendados.html` | Catálogo curado por criterio, cinco categorías |
 | Términos y Condiciones | `/terminos.html` | Borrador legal (banner de aviso activo) |
 | Política de Privacidad | `/privacidad.html` | Borrador legal (banner de aviso activo) |
 
@@ -40,8 +42,61 @@ Deployada en Firebase Hosting: **https://guauguaucars.com**
 - **Email de bienvenida** al lead (Resend, template HTML personalizado)
 - **Notificación interna** a `hola@guauguaucars.com` en cada nuevo lead
 - **Detección automática** al registrarse en la app → descuento beta asignado
-- **Modal "Próximamente"** en sección `#apoya` (todos los tiers)
+- **Sección de recomendados** → catálogo curado con enlaces de afiliado de Amazon
+- **Consentimiento de cookies** → Tag Manager solo se carga con permiso de analítica
 - **Licencia restrictiva** sobre marca y concepto (ver `LICENSE`)
+
+---
+
+## Recomendados y afiliados
+
+La antigua sección de financiación colectiva (`#apoya`) está retirada y archivada en
+`index.html` como bloque comentado. Su lugar lo ocupa `#recomendados`, que lleva a
+`/recomendados.html`: cinco categorías elegidas por criterio —transporte en coche, hidratación,
+descanso, higiene y senderismo— y no por catálogo.
+
+- **Programa**: Amazon Afiliados, ID de seguimiento `guauguaucars.com-21`
+- **Escaparate**: https://www.amazon.es/shop/queai04
+- **Enlaces**: siempre en formato largo `www.amazon.es/...` (nunca el acortador `amzn.to`), con
+  `target="_blank"` y `rel="sponsored nofollow noopener"`
+- **Precios**: la web no publica precios ni imágenes de producto. El precio y el stock los muestra
+  Amazon en sus listas de ideas, así que nunca quedan desactualizados y no hace falta la Product
+  Advertising API
+- **Divulgación**: obligatoria en cualquier página con enlaces, incluida la home
+
+Los detalles de la feature —specs, tareas y decisiones— están en
+`odd/tasks/affiliate-recommendations.md`; ese directorio no se publica.
+
+---
+
+## Cookies y consentimiento
+
+`js/consent.js` bloquea todo lo no esencial hasta que el visitante decide:
+
+- **Analítica**: Google Tag Manager (`GTM-M38485DD`) no se inyecta sin permiso, y `pushEvent()`
+  deja de emitir eventos mientras no haya consentimiento
+- **Afiliación**: se declara en el banner y en `privacidad.html#cookies`; las cookies de Amazon
+  solo se aceptan con permiso explícito
+- La decisión se guarda en `localStorage['guauguau-consent/v1']` y se revisa desde el enlace
+  **Cookies** del pie de página
+
+Verificación sin dependencias:
+
+```bash
+node tools/consent-check.cjs   # 15 aserciones sobre el gating; sale 0 si todo pasa
+```
+
+---
+
+## Desarrollo local
+
+```bash
+python3 -m http.server 8080 --bind 127.0.0.1
+# http://127.0.0.1:8080/
+```
+
+El deploy excluye los archivos internos (`odd/**`, `tools/**` y todos los `.md`) mediante
+`firebase.json`; el servidor local sí los muestra.
 
 ---
 

@@ -4,6 +4,9 @@
 
 // ── Analytics (GTM dataLayer) ───────────────────────────────────────
 function pushEvent(event, params = {}) {
+  // Sin consentimiento de analítica no se emite nada: GTM ni siquiera está cargado.
+  if (!window.gcConsent || typeof window.gcConsent.analytics !== 'function') return;
+  if (!window.gcConsent.analytics()) return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });
 }
@@ -279,38 +282,12 @@ function initSwipe() {
 // ════════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── Navbar scroll ──────────────────────────────────────────
-  const navbar = document.getElementById('navbar');
-  const darkMQ = window.matchMedia('(prefers-color-scheme: dark)');
-
-  function getNavBgClass() {
-    return darkMQ.matches ? 'bg-slate-900/95' : 'bg-white/95';
-  }
-
-  function updateNavbar() {
-    if (window.scrollY > 60) {
-      navbar.classList.remove('bg-slate-900/95', 'bg-white/95', 'bg-transparent');
-      navbar.classList.add(getNavBgClass(), 'shadow-xl');
-    } else {
-      navbar.classList.remove('bg-slate-900/95', 'bg-white/95', 'shadow-xl');
-      navbar.classList.add('bg-transparent');
-    }
-  }
-
-  window.addEventListener('scroll', updateNavbar, { passive: true });
-
-  // Re-evaluar si el usuario cambia el modo del sistema con la landing abierta
-  darkMQ.addEventListener('change', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.remove('bg-slate-900/95', 'bg-white/95');
-      navbar.classList.add(getNavBgClass());
-    }
-  });
+  // La barra de navegación, el menú móvil y el reveal viven en js/site.js.
 
   // ── Menú mobile ─────────────────────────────────────────────
   const menuBtn    = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  // El toggle del menú móvil vive en js/site.js.
   mobileMenu?.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => mobileMenu.classList.add('hidden'));
   });
@@ -318,18 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Inicializar demo del teléfono ───────────────────────────
   initPhoneDemo();
 
-  // ── Fade-in al scroll + section_visible ─────────────────────
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  fadeEls.forEach(el => observer.observe(el));
-
+  // ── section_visible (el reveal de .fade-in vive en js/site.js) ──
   // Observar secciones con id para section_visible (una sola vez por sesión)
   const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -415,13 +381,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Modal "Próximamente" (sección #apoya) ────────────────────
+  // ── Modal "Próximamente" — ARCHIVADO (T4) ──────────────────
+  // El markup vive comentado al final de index.html y los tiers ya no existen,
+  // así que estas guardas evitan un null-reference si alguien lo restaura.
   const comingSoonModal    = document.getElementById('coming-soon-modal');
   const comingSoonBackdrop = document.getElementById('coming-soon-backdrop');
   const comingSoonClose    = document.getElementById('coming-soon-close');
   const comingSoonCta      = document.getElementById('coming-soon-cta');
 
   function openComingSoon() {
+    if (!comingSoonModal) return;
     comingSoonModal.classList.remove('hidden');
     comingSoonModal.classList.add('flex');
     document.body.style.overflow = 'hidden';
@@ -429,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeComingSoon() {
+    if (!comingSoonModal) return;
     comingSoonModal.classList.add('hidden');
     comingSoonModal.classList.remove('flex');
     document.body.style.overflow = '';

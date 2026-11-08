@@ -21,3 +21,10 @@ firebase-debug.log
 *.pem
 secrets.json
 service-account*.json
+
+# Herramientas locales del harness (caches regenerables, nunca se publican)
+.atl/
+.engram/
+
+# Backlog local: el propio BACKLOG.md declara que no se sube a GitHub
+BACKLOG.md
