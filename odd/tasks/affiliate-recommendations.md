@@ -60,7 +60,7 @@ acortador `amzn.to`, para que el visitante vea el destino antes de hacer clic.
 | T2 | Política de cookies y cláusula de afiliados en `privacidad.html` | S5, S6 | slice 1 |
 | T3 | Página `/recomendados.html` con las cinco categorías | S2 | slice 2 |
 | T4 | Home: nueva sección, renombrado de navegación y archivo de tiers y modal | S1, S3, S8 | slice 3 |
-| T5 | `robots.txt`, `sitemap.xml` y documentación en README y BACKLOG | S7 | — |
+| T5 | `robots.txt`, `sitemap.xml` y documentación en README y BACKLOG | S7 | slice 4 |
 | T6 | Retirar la sección de crowdfunding y sus enlaces de navegación | S11 | slice 1b |
 | T7 | `tools/consent-check.cjs` como primer test del repo | S4 | `f9be087` |
 | T8 | `.gitignore`: caches del harness y backlog personal | — | `5235d5f` |
@@ -143,3 +143,12 @@ que es perfecto, sin embargo hay algo que si me gustaría y es que se añada una
 home que indique que comprando esos recomendados o usando nuestro enlace de afiliados colaboran con
 el proyecto, concretamente una llamada a la acción para que el visitante compre desde nuestros
 enlaces y conseguir un pequeño tunel de ventas"
+
+**L11.** "Genial, me encanta, ahora, todo lo que sea independiente de las listas quiero que lo
+hagas, solo dejamé al final la parte pendiente que depende unicamente de mi, lo haré lo antes
+posible"
+
+**L12.** Hallazgo de deploy: `firebase.json` publicaba el directorio entero (`"public": "."`) con
+solo tres exclusiones, así que `odd/tasks/affiliate-recommendations.md` —que contiene mensajes del
+usuario y decisiones internas— y `tools/consent-check.cjs` habrían quedado accesibles en
+`guauguaucars.com`. Se añadieron `**/*.md`, `odd/**` y `tools/**` a las exclusiones.
