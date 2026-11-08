@@ -597,11 +597,68 @@
 
 
   <!-- ════════════════════════════════════════════════════════════
-       CROWDFUNDING — RETIRADO Y OCULTO
-       Se deja de mostrar mientras se reemplaza por recomendados
-       (ver odd/tasks/affiliate-recommendations.md). Los tiers y el
-       modal «Próximamente» se archivan en el slice 3.
+       RECOMENDADOS — entrada al catálogo de afiliados
+       Reglas: enlaces largos de amazon.es, rel="sponsored nofollow noopener"
+       y divulgación visible. Ver odd/tasks/affiliate-recommendations.md
   ════════════════════════════════════════════════════════════ -->
+  <section id="recomendados" class="bg-slate-900 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-10 fade-in">
+        <span class="text-brand font-semibold text-sm uppercase tracking-widest">Recomendados</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3 mb-4">Prepara el viaje de tu peludo</h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Hemos elegido, por criterio y no por catálogo, lo que de verdad se usa cuando viajas con tu mascota.
+          <strong class="text-white">Si compras desde nuestros enlaces, GuauGuauCars se lleva una pequeña comisión de Amazon, sin coste extra para ti</strong>:
+          es lo que mantiene el proyecto en marcha.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+        <a href="recomendados.html"
+           class="group flex items-start gap-4 bg-slate-800/50 border border-slate-700 hover:border-brand rounded-2xl p-6 transition-colors">
+          <span class="text-3xl" aria-hidden="true">🐾</span>
+          <span>
+            <span class="block text-white font-bold mb-1 group-hover:text-brand transition-colors">Artículos para mascotas</span>
+            <span class="block text-slate-400 text-sm">Transporte seguro, hidratación, descanso, higiene y rutas. Cinco listas con su criterio explicado.</span>
+          </span>
+        </a>
+
+        <a href="https://www.amazon.es/shop/queai04?tag=guauguaucars.com-21"
+           target="_blank" rel="sponsored nofollow noopener"
+           class="group flex items-start gap-4 bg-slate-800/50 border border-slate-700 hover:border-brand rounded-2xl p-6 transition-colors">
+          <span class="text-3xl" aria-hidden="true">🛒</span>
+          <span>
+            <span class="block text-white font-bold mb-1 group-hover:text-brand transition-colors">Toda la tienda de Amazon</span>
+            <span class="block text-slate-400 text-sm">Si ya sabes lo que buscas, entra por aquí. Pagas lo mismo y colaboras igual.</span>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="recomendados.html"
+           class="inline-block bg-brand hover:bg-brand-dark text-white font-bold px-8 py-4 rounded-xl transition-colors shadow-lg shadow-brand/25">
+          Ver los recomendados
+        </a>
+        <p class="text-slate-500 text-xs max-w-xl mx-auto mt-4 leading-relaxed">
+          Como Asociado de Amazon, GuauGuauCars obtiene ingresos por las compras adscritas que cumplen los
+          requisitos aplicables. El precio que pagas es el mismo que en Amazon.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       ARCHIVO — CROWDFUNDING RETIRADO (T4). No se renderiza.
+       Para recuperarlo: descomentar este bloque y el modal «Próximamente»
+       del final del documento, y quitar la guarda de js/main.js.
+       El historial completo está en el commit dd51606.
+  ════════════════════════════════════════════════════════════ -->
+  <!--
+  
   <section id="apoya" class="bg-slate-900 py-24 hidden" aria-hidden="true">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -614,10 +671,10 @@
         </p>
       </div>
 
-      <!-- Barra de progreso -->
+      
       <div class="max-w-xl mx-auto mb-16 fade-in">
         <div class="flex justify-between text-sm text-slate-400 mb-2">
-          <!-- TODO: actualizar con datos reales de la campaña -->
+          
           <span><strong class="text-white">0 €</strong> recaudados</span>
           <span>Objetivo: <strong class="text-white">4.500 €</strong></span>
         </div>
@@ -627,7 +684,7 @@
         <p class="text-center text-slate-500 text-sm mt-2">Campaña no iniciada · Regístrate para ser el primero</p>
       </div>
 
-      <!-- Tiers -->
+      
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <div class="tier-card bg-slate-800/50 border border-slate-700 rounded-2xl p-6 text-center">
@@ -689,6 +746,8 @@
       </div>
     </div>
   </section>
+  -->
+
 
 
   <!-- ════════════════════════════════════════════════════════════
@@ -909,28 +968,36 @@
   <!-- Toast -->
   <div id="toast" class="toast" role="alert" aria-live="polite"></div>
 
-  <!-- Modal: Próximamente (sección #apoya) -->
-  <div id="coming-soon-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title">
-    <!-- Backdrop -->
-    <div id="coming-soon-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-    <!-- Panel -->
-    <div class="relative bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
-      <div class="text-5xl mb-4">🚧</div>
-      <h3 id="coming-soon-title" class="text-xl font-black text-white mb-2">Próximamente</h3>
-      <p class="text-slate-400 text-sm leading-relaxed mb-6">
-        La campaña de financiación aún no está activa.<br/>
-        Apúntate a la lista de espera y te avisamos cuando arranque.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="#contacto" id="coming-soon-cta" class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-3 rounded-xl text-sm transition-colors">
-          Unirme a la lista de espera
-        </a>
-        <button id="coming-soon-close" class="text-slate-400 hover:text-white text-sm px-5 py-3 rounded-xl border border-slate-700 hover:border-slate-500 transition-colors">
-          Cerrar
-        </button>
+  <!-- ════════════════════════════════════════════════════════════
+       ARCHIVO — Modal «Próximamente» (T4). Sin disparadores desde que se
+       archivaron los tiers. Para recuperarlo: descomentar el bloque y
+       quitar la guarda de js/main.js.
+  ════════════════════════════════════════════════════════════ -->
+  <!--
+  
+    <div id="coming-soon-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title">
+      
+      <div id="coming-soon-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      
+      <div class="relative bg-slate-900 border border-slate-700 rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl">
+        <div class="text-5xl mb-4">🚧</div>
+        <h3 id="coming-soon-title" class="text-xl font-black text-white mb-2">Próximamente</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+          La campaña de financiación aún no está activa.<br/>
+          Apúntate a la lista de espera y te avisamos cuando arranque.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="#contacto" id="coming-soon-cta" class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-3 rounded-xl text-sm transition-colors">
+            Unirme a la lista de espera
+          </a>
+          <button id="coming-soon-close" class="text-slate-400 hover:text-white text-sm px-5 py-3 rounded-xl border border-slate-700 hover:border-slate-500 transition-colors">
+            Cerrar
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  -->
+
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

@@ -351,7 +351,7 @@ html { scroll-behavior: smooth; }
   #contacto   { background-color: rgba(68, 166, 130, 0.05) !important; }
 
   #protectoras,
-  #apoya      { background-color: #FFFFFF !important; }
+  #recomendados { background-color: #FFFFFF !important; }
 
   /* ── Texto ── */
   .text-white     { color: #212121 !important; }

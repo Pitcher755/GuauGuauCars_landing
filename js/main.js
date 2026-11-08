@@ -418,13 +418,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ── Modal "Próximamente" (sección #apoya) ────────────────────
+  // ── Modal "Próximamente" — ARCHIVADO (T4) ──────────────────
+  // El markup vive comentado al final de index.html y los tiers ya no existen,
+  // así que estas guardas evitan un null-reference si alguien lo restaura.
   const comingSoonModal    = document.getElementById('coming-soon-modal');
   const comingSoonBackdrop = document.getElementById('coming-soon-backdrop');
   const comingSoonClose    = document.getElementById('coming-soon-close');
   const comingSoonCta      = document.getElementById('coming-soon-cta');
 
   function openComingSoon() {
+    if (!comingSoonModal) return;
     comingSoonModal.classList.remove('hidden');
     comingSoonModal.classList.add('flex');
     document.body.style.overflow = 'hidden';
@@ -432,6 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function closeComingSoon() {
+    if (!comingSoonModal) return;
     comingSoonModal.classList.add('hidden');
     comingSoonModal.classList.remove('flex');
     document.body.style.overflow = '';

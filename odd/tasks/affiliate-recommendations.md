@@ -59,7 +59,7 @@ acortador `amzn.to`, para que el visitante vea el destino antes de hacer clic.
 | T1 | Banner de consentimiento, gating de GTM/GA4 y enlace para revisar la decisión | S4 | slice 1 |
 | T2 | Política de cookies y cláusula de afiliados en `privacidad.html` | S5, S6 | slice 1 |
 | T3 | Página `/recomendados.html` con las cinco categorías | S2 | slice 2 |
-| T4 | Home: nueva sección, renombrado de navegación y archivo de tiers y modal | S1, S3, S8 | — |
+| T4 | Home: nueva sección, renombrado de navegación y archivo de tiers y modal | S1, S3, S8 | slice 3 |
 | T5 | `robots.txt`, `sitemap.xml` y documentación en README y BACKLOG | S7 | — |
 | T6 | Retirar la sección de crowdfunding y sus enlaces de navegación | S11 | slice 1b |
 | T7 | `tools/consent-check.cjs` como primer test del repo | S4 | `f9be087` |
@@ -137,3 +137,9 @@ intentaré y si te las paso con enlace corto no hagas caso, estoy de acuerdo en 
 ver a donde va, usa el largo. Lo que si quiero ahora es que me permitas un enlace local para ver el
 resultado actual de la landing con navegación a /recomendados.html y pueda ver el estado actual
 completo antes de desplegar en firebase que lo haremos cuando lo tengamos más pulido"
+
+**L10.** "Me gusta mucho el diseño, lo revisaré más a fondo por si veo algo que falla pero parece
+que es perfecto, sin embargo hay algo que si me gustaría y es que se añada una sección pequeña en la
+home que indique que comprando esos recomendados o usando nuestro enlace de afiliados colaboran con
+el proyecto, concretamente una llamada a la acción para que el visitante compre desde nuestros
+enlaces y conseguir un pequeño tunel de ventas"
