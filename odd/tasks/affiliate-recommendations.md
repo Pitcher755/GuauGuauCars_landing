@@ -38,6 +38,17 @@ publicitarios" y pasa a describir las cookies de afiliación de Amazon y el cons
 **S8.** Las cuatro apariciones del texto "Apoya el proyecto" (header, menú móvil, `h2` de la
 sección, footer) se renombran al nuevo encuadre.
 
+**S9.** Los enlaces de afiliado usan el ID de seguimiento `guauguaucars.com-21`, creado en la
+cuenta para este sitio. El escaparate es `https://www.amazon.es/shop/queai04`.
+
+**S10.** Las categorías se apoyan en listas de ideas del escaparate, que muestran el precio
+actualizado en el dominio de Amazon. La página propia **no** publica precios ni imágenes de
+producto, así que no puede quedar desactualizada ni incumplir la cláusula de precios.
+
+**S11.** La sección de crowdfunding deja de renderizarse en producción ya, sin esperar al slice 3,
+y sus cuatro enlaces de navegación se retiran para no dejar anclas muertas. El slice 3 reintroduce
+la navegación apuntando a la sección nueva.
+
 ## Tasks
 
 | ID | Tarea | Specs | Commit |
@@ -47,8 +58,13 @@ sección, footer) se renombran al nuevo encuadre.
 | T3 | Página `/recomendados.html` con las cinco categorías | S2 | — |
 | T4 | Home: nueva sección, renombrado de navegación y archivo de tiers y modal | S1, S3, S8 | — |
 | T5 | `robots.txt`, `sitemap.xml` y documentación en README y BACKLOG | S7 | — |
+| T6 | Retirar la sección de crowdfunding y sus enlaces de navegación | S11 | slice 1b |
+| T7 | `tools/consent-check.cjs` como primer test del repo | S4 | `f9be087` |
+| T8 | `.gitignore`: caches del harness y backlog personal | — | `5235d5f` |
 
-Pendiente de entrada del usuario: tag de afiliado y URL de la tienda de Amazon (necesarios para T3).
+Entradas ya recibidas: ID de seguimiento `guauguaucars.com-21`, escaparate
+`https://www.amazon.es/shop/queai04` y lista de ideas de ejemplo (`34XD1YSLQ6SES`).
+Pendiente para T3: el enlace de la lista de ideas de cada una de las cinco categorías.
 
 ### Límites de slice
 
@@ -89,3 +105,25 @@ los cambios"
 en 0 € y objetivo 4.500 €, aunque el comentario del código la declara oculta; los cuatro CTAs abren
 el modal "Próximamente"; `privacidad.html:295` afirma que no se usan cookies de terceros con fines
 publicitarios.
+
+**L6.** "Vamos a aclarar algunos detalles de mi cuenta de afiliados, esta lleva ya un par de años en
+funcionamiento, por lo tanto superé el minimo de ventas en los primeros meses que pide amazon, la
+cosa es que he creado un nuevo ID en la misma cuenta para este caso concreto. El caso de la tienda
+no me ha pedido redes sociales sole me permite un escaparate en amazon, este me permite agregar por
+ejemplo listas con productos, no te puedo dar mas detalles porque lo acabo de crear y aun no se
+como va, se llama lista de ideas y agrupa una variedad de artículos, por ejemplo una lista puede
+ser transporte seguro en coche, en esa añadir todos los productos que tengan que ver con la
+seguridad y el transporte de mascotas en coche... He creado esa lista de ejemplo y este es el
+enlace https://amzn.to/4iBaQda Sobre los artículos en mi página, lo que da confianza, podemos añadir
+los links, aunque me preocupa el precio desactualizado, comentas que se requiere la Product
+Advertising API, no estoy seguro pero creo que si que la tengo, aunque nunca la he usado y no se
+como hacerlo todavía. El storeID es queai04-21 y el id de seguimiento es guauguaucars.com-21, pero
+hay una duda y es que me ha aparecido otro que no he creado yo, o no conscientemente que es
+onamzqueai04-21. El enlace de la tienda es https://www.amazon.es/shop/queai04"
+
+**L7.** Evidencia del enlace de la lista de ideas: `https://amzn.to/4iBaQda` responde `301` hacia
+`https://www.amazon.es/shop/queai04/list/34XD1YSLQ6SES?linkCode=spc&tag=guauguaucars.com-21&domainId=influencer&asc_contentid=amzn1.ideas.34XD1YSLQ6SES`,
+es decir que el ID de seguimiento viaja dentro y que el escaparate es la superficie de influencer.
+
+**L8.** Decisiones de esta ronda: commitear el harness · añadir al `.gitignore` lo que falta ·
+"la sección de crowdfunding no debe quedar visible".

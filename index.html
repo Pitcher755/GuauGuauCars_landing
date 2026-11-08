@@ -166,7 +166,6 @@
         <div class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#como-funciona" class="text-slate-400 hover:text-white transition-colors">Cómo funciona</a>
           <a href="#protectoras"   class="text-slate-400 hover:text-white transition-colors">Protectoras</a>
-          <a href="#apoya"         class="text-slate-400 hover:text-white transition-colors">Apoya el proyecto</a>
 
           <a href="#contacto"
              class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-2 rounded-full transition-colors">
@@ -189,7 +188,6 @@
     <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-t border-slate-800 px-4 py-4 space-y-3">
       <a href="#como-funciona" class="block text-slate-300 hover:text-white py-2 transition-colors">Cómo funciona</a>
       <a href="#protectoras"   class="block text-slate-300 hover:text-white py-2 transition-colors">Protectoras</a>
-      <a href="#apoya"         class="block text-slate-300 hover:text-white py-2 transition-colors">Apoya el proyecto</a>
 
       <a href="#contacto"
          class="block bg-brand text-white font-semibold px-5 py-3 rounded-xl text-center hover:bg-brand-dark transition-colors">
@@ -597,11 +595,12 @@
 
 
   <!-- ════════════════════════════════════════════════════════════
-       CROWDFUNDING — OCULTO POR DEFECTO
-       Para activar: quitar la clase "hidden" de la sección
-       o desde consola: document.getElementById('apoya').classList.remove('hidden')
+       CROWDFUNDING — RETIRADO Y OCULTO
+       Se deja de mostrar mientras se reemplaza por recomendados
+       (ver odd/tasks/affiliate-recommendations.md). Los tiers y el
+       modal «Próximamente» se archivan en el slice 3.
   ════════════════════════════════════════════════════════════ -->
-  <section id="apoya" class="bg-slate-900 py-24">
+  <section id="apoya" class="bg-slate-900 py-24 hidden" aria-hidden="true">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <div class="text-center mb-6 fade-in">
@@ -848,7 +847,6 @@
           <ul class="space-y-2 text-sm text-slate-400">
             <li><a href="#como-funciona" class="hover:text-brand transition-colors">Cómo funciona</a></li>
             <li><a href="#protectoras"   class="hover:text-brand transition-colors">Protectoras</a></li>
-            <li><a href="#apoya"         class="hover:text-brand transition-colors">Apoya el proyecto</a></li>
             <li><a href="#contacto"      class="hover:text-brand transition-colors">Únete a la Beta</a></li>
           </ul>
         </div>
