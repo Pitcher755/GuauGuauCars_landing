@@ -58,7 +58,7 @@ acortador `amzn.to`, para que el visitante vea el destino antes de hacer clic.
 |---|---|---|---|
 | T1 | Banner de consentimiento, gating de GTM/GA4 y enlace para revisar la decisión | S4 | slice 1 |
 | T2 | Política de cookies y cláusula de afiliados en `privacidad.html` | S5, S6 | slice 1 |
-| T3 | Página `/recomendados.html` con las cinco categorías | S2 | slice 2 |
+| T3 | Página `/recomendados.html` con las cinco categorías | S2 | slice 2, cerrado en `5639b08` + cierre |
 | T4 | Home: nueva sección, renombrado de navegación y archivo de tiers y modal | S1, S3, S8 | slice 3 |
 | T5 | `robots.txt`, `sitemap.xml` y documentación en README y BACKLOG | S7 | slice 4 |
 | T6 | Retirar la sección de crowdfunding y sus enlaces de navegación | S11 | slice 1b |
@@ -219,3 +219,12 @@ fiscal**. Decisiones editoriales que conviene confirmar: plazo de conservación 
 fijado en 24 meses, contacto de privacidad unificado en `hola@guauguaucars.com` (antes figuraba
 `privacy@`, que no consta como buzón real) y cifras de comisión tomadas del registro interno del
 proyecto.
+
+**L24.** "Ahora tengo otra lista https://amzn.to/3Wsfjrf Descanso y cama portátil · también esta otra
+https://amzn.to/4Anv6Gz Higiene y limpieza · y la ultima https://amzn.to/4z94aJo Senderismo y paseo
+largo. Si no me equivoco con esto terminamos esta rama"
+
+**L25.** Las cinco listas quedan enlazadas en formato largo, cada categoría con la suya y sin ningún
+enlace al escaparate genérico: transporte `34XD1YSLQ6SES`, hidratación `1J7DSGQTQHQ4Q`, descanso
+`1BQUSEOMVBDJ7`, higiene `68JQG1ZE1S0U`, senderismo `2PYXN7ESQ1OPB`. Se elimina la nota de «listas
+en preparación» porque ya no aplica.
