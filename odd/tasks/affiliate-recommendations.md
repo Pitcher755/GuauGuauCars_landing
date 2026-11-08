@@ -49,13 +49,16 @@ producto, así que no puede quedar desactualizada ni incumplir la cláusula de p
 y sus cuatro enlaces de navegación se retiran para no dejar anclas muertas. El slice 3 reintroduce
 la navegación apuntando a la sección nueva.
 
+**S12.** Los enlaces de afiliado se publican en formato largo (`amazon.es/...`), nunca con el
+acortador `amzn.to`, para que el visitante vea el destino antes de hacer clic.
+
 ## Tasks
 
 | ID | Tarea | Specs | Commit |
 |---|---|---|---|
 | T1 | Banner de consentimiento, gating de GTM/GA4 y enlace para revisar la decisión | S4 | slice 1 |
 | T2 | Política de cookies y cláusula de afiliados en `privacidad.html` | S5, S6 | slice 1 |
-| T3 | Página `/recomendados.html` con las cinco categorías | S2 | — |
+| T3 | Página `/recomendados.html` con las cinco categorías | S2 | slice 2 |
 | T4 | Home: nueva sección, renombrado de navegación y archivo de tiers y modal | S1, S3, S8 | — |
 | T5 | `robots.txt`, `sitemap.xml` y documentación en README y BACKLOG | S7 | — |
 | T6 | Retirar la sección de crowdfunding y sus enlaces de navegación | S11 | slice 1b |
@@ -63,8 +66,9 @@ la navegación apuntando a la sección nueva.
 | T8 | `.gitignore`: caches del harness y backlog personal | — | `5235d5f` |
 
 Entradas ya recibidas: ID de seguimiento `guauguaucars.com-21`, escaparate
-`https://www.amazon.es/shop/queai04` y lista de ideas de ejemplo (`34XD1YSLQ6SES`).
-Pendiente para T3: el enlace de la lista de ideas de cada una de las cinco categorías.
+`https://www.amazon.es/shop/queai04` y lista de ideas de transporte (`34XD1YSLQ6SES`).
+Pendiente para cerrar T3: la lista de ideas de hidratación, descanso, higiene y senderismo.
+Mientras llegan, esas cuatro categorías enlazan al escaparate con el rótulo "Ver en la tienda".
 
 ### Límites de slice
 
@@ -127,3 +131,9 @@ es decir que el ID de seguimiento viaja dentro y que el escaparate es la superfi
 
 **L8.** Decisiones de esta ronda: commitear el harness · añadir al `.gitignore` lo que falta ·
 "la sección de crowdfunding no debe quedar visible".
+
+**L9.** "Genial, si esperamos a que cree las cinco listas, no se si podré hacerlo hoy pero lo
+intentaré y si te las paso con enlace corto no hagas caso, estoy de acuerdo en que el usuario debe
+ver a donde va, usa el largo. Lo que si quiero ahora es que me permitas un enlace local para ver el
+resultado actual de la landing con navegación a /recomendados.html y pueda ver el estado actual
+completo antes de desplegar en firebase que lo haremos cuando lo tengamos más pulido"
