@@ -197,3 +197,25 @@ clara dejaba el enlace invisible: se corrige con una regla acotada a `#navbar`. 
 `recomendados.html` declaraba un `brand-dark` inventado (`#358668`); ahora las cuatro páginas usan
 `#358A6B`. El "azul" que el usuario aprueba es el slate por defecto de Tailwind: el home lo
 sobrescribe con grises neutros y recomendados no, y eso se conserva a propósito.
+
+**L20.** "he añadido una nueva lista este es el enlace https://amzn.to/4iEwWgh Hidratación y comida de
+viaje. Añade el enlace y dime si puedes ajustar el contenido de las secciones de 'Aviso legal' y
+'Privacidad' dejando una versión definitiva coniciendo como conoces actualmente el proyecto"
+
+**L21.** Enlace de hidratación resuelto a
+`amazon.es/shop/queai04/list/1J7DSGQTQHQ4Q?tag=guauguaucars.com-21`. Quedan pendientes descanso,
+higiene y senderismo.
+
+**L22.** Reescritas `terminos.html` y `privacidad.html` con los hechos reales del proyecto:
+titular Javier Fernández Guerra, servicio no operativo (beta privada por invitación), sección de
+enlaces de afiliado con descargo, propiedad intelectual según `LICENSE` (código visible pero no
+libre), comisión como margen sobre el precio del conductor con los tres tramos (25 / 12,5 / 0 %),
+encargados del tratamiento (Google/Firebase con funciones en `us-central1`, Resend, Stripe, Amazon),
+transferencia internacional por esa región, conservación, derechos y AEPD, y cookies con el
+consentimiento real que implementa `js/consent.js`.
+
+**L23.** Datos que el titular debe aportar antes de quitar el banner de aviso: **NIF** y **domicilio
+fiscal**. Decisiones editoriales que conviene confirmar: plazo de conservación de la lista de espera
+fijado en 24 meses, contacto de privacidad unificado en `hola@guauguaucars.com` (antes figuraba
+`privacy@`, que no consta como buzón real) y cifras de comisión tomadas del registro interno del
+proyecto.
