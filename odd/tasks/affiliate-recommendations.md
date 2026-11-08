@@ -152,3 +152,25 @@ posible"
 solo tres exclusiones, así que `odd/tasks/affiliate-recommendations.md` —que contiene mensajes del
 usuario y decisiones internas— y `tools/consent-check.cjs` habrían quedado accesibles en
 `guauguaucars.com`. Se añadieron `**/*.md`, `odd/**` y `tools/**` a las exclusiones.
+
+**L13.** "Bien, mientras hago las listas, hablemos del diseño y mi revisión visual, a la revisión no
+le veo errores, en la nueva sección de /recomendados, se usa para el fondo una paleta de tonos
+azules, y esto me parece bien para separar la sección principal de esta, sin embargo si hay cosas
+que quiero mejorar, mira el diseño de home, los tonos del fondo tienen degradado que quiero que
+tenga la sección de recomendados, además las cards tienen una pequeña animación que no se reproduce
+en recomendados al igual que el reflejo mostrado al posicionarme encima de una de esas cards, este
+color de reflejo debe ser el mismo en todas las secciones, el degradado en el fondo tambien debe
+ser el mismo, solo pueden cambiar los colores. En el modo claro también existe ese degradado en el
+fondo, además las cards tienen un color suave acorde al fondo, para que no sea todo blanco y plano
+como se ve ahora en la sección de recomendados."
+
+**L14.** Causas de las tres diferencias: las cards usaban `bg-slate-900`, que en light mode se fuerza
+a `#FFFFFF` (de ahí el blanco plano); `benefit-card` y `.fade-in` solo existían en el home, y el
+observer de `.fade-in` vive en `js/main.js`, que la página nueva no carga; y el fondo era plano
+porque `.gradient-hero` solo se aplica al hero. Se añadieron `.gradient-recommended` (misma
+geometría 135°/0-55-100 que el hero, colores fríos), `.rec-card` con el mismo reflejo
+`rgba(68, 166, 130, 0.12)` y el observer replicado en el script inline de la página.
+
+**L15.** Decisión de color en light mode: las cards del catálogo usan un tinte slate-azul
+(`rgba(71, 102, 138, 0.10)`) y no el verde de marca, porque el fondo de la sección es frío. Si se
+prefiere el verde de marca como en el home, es cambiar una regla en `css/custom.css`.

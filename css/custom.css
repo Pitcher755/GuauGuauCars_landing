@@ -16,6 +16,33 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(135deg, #121212 0%, #182820 55%, #121212 100%);
 }
 
+/* ── Gradiente de la página de recomendados ──
+   Misma geometría que .gradient-hero (135°, tres paradas en 0 / 55 / 100);
+   solo cambian los colores, para separar el catálogo del resto del sitio. */
+.gradient-recommended {
+  background: linear-gradient(135deg, #0f172a 0%, #17263c 55%, #0f172a 100%);
+  background-attachment: fixed;
+}
+
+/* ── Card del catálogo — misma mecánica que .benefit-card ──
+   Mismo levantamiento y mismo color de reflejo, con borde slate. */
+.rec-card {
+  background-color: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(71, 85, 105, 0.55);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.rec-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(68, 166, 130, 0.55);
+  box-shadow: 0 20px 40px rgba(68, 166, 130, 0.12);
+}
+
+/* Superficie estática (aviso de afiliado): mismo tinte, sin levantamiento */
+.rec-surface {
+  background-color: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(71, 85, 105, 0.55);
+}
+
 /* ── Navbar blur ── */
 .navbar-blur {
   backdrop-filter: blur(16px);
@@ -337,6 +364,25 @@ html { scroll-behavior: smooth; }
   /* ── Hero gradient ── */
   .gradient-hero {
     background: linear-gradient(135deg, #f0fdf4 0%, #d1fae5 55%, #f0fdf4 100%) !important;
+  }
+
+  /* ── Recomendados: mismo degradado, tonos fríos ── */
+  .gradient-recommended {
+    background: linear-gradient(135deg, #f8fafc 0%, #e3ecf7 55%, #f8fafc 100%) !important;
+  }
+
+  /* ── Card del catálogo: tinte suave acorde al fondo, nunca blanco plano ── */
+  .rec-card {
+    background-color: rgba(71, 102, 138, 0.10) !important;
+    border: 1px solid rgba(71, 102, 138, 0.26) !important;
+  }
+  .rec-card:hover {
+    background-color: rgba(71, 102, 138, 0.16) !important;
+    border-color: rgba(68, 166, 130, 0.45) !important;
+  }
+  .rec-surface {
+    background-color: rgba(71, 102, 138, 0.10) !important;
+    border: 1px solid rgba(71, 102, 138, 0.26) !important;
   }
 
   /* ── Tailwind backgrounds sólidos ── */

@@ -33,7 +33,7 @@
   <script src="js/consent.js" defer></script>
 </head>
 
-<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+<body class="gradient-recommended bg-slate-950 text-slate-100 font-sans antialiased">
 
   <!-- Navegación -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 border-b border-slate-800 navbar-blur">
@@ -90,7 +90,7 @@
 
   <!-- Divulgación de afiliados -->
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-6">
+    <div class="rec-surface rounded-2xl p-5 sm:p-6">
       <p class="text-slate-300 text-sm leading-relaxed">
         <strong class="text-white">Cómo funciona esto.</strong> Algunos enlaces de esta página son enlaces
         de afiliado del Programa de Afiliados de Amazon. Como Asociado de Amazon, GuauGuauCars obtiene
@@ -111,7 +111,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
       <!-- 1. Transporte -->
-      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col">
+      <article class="rec-card fade-in rounded-2xl p-6 flex flex-col">
         <div class="text-4xl mb-3">🚗</div>
         <h2 class="text-xl font-black text-white mb-2">Transporte seguro en coche</h2>
         <p class="text-slate-400 text-sm mb-4">Lo primero que mira un veterinario cuando le hablas de viajar con tu perro.</p>
@@ -128,7 +128,7 @@
       </article>
 
       <!-- 2. Hidratación -->
-      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col">
+      <article class="rec-card fade-in rounded-2xl p-6 flex flex-col">
         <div class="text-4xl mb-3">💧</div>
         <h2 class="text-xl font-black text-white mb-2">Hidratación y comida de viaje</h2>
         <p class="text-slate-400 text-sm mb-4">Beber cada dos horas es la recomendación veterinaria en trayectos largos.</p>
@@ -145,7 +145,7 @@
       </article>
 
       <!-- 3. Descanso -->
-      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col">
+      <article class="rec-card fade-in rounded-2xl p-6 flex flex-col">
         <div class="text-4xl mb-3">🛏️</div>
         <h2 class="text-xl font-black text-white mb-2">Descanso y cama portátil</h2>
         <p class="text-slate-400 text-sm mb-4">Una cama con su olor reduce el estrés en un sitio que no conoce.</p>
@@ -162,7 +162,7 @@
       </article>
 
       <!-- 4. Higiene -->
-      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col">
+      <article class="rec-card fade-in rounded-2xl p-6 flex flex-col">
         <div class="text-4xl mb-3">🧼</div>
         <h2 class="text-xl font-black text-white mb-2">Higiene y limpieza</h2>
         <p class="text-slate-400 text-sm mb-4">Lo que agradece el siguiente pasajero, y el dueño del coche.</p>
@@ -179,7 +179,7 @@
       </article>
 
       <!-- 5. Senderismo -->
-      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col md:col-span-2">
+      <article class="rec-card fade-in rounded-2xl p-6 flex flex-col md:col-span-2">
         <div class="text-4xl mb-3">🥾</div>
         <h2 class="text-xl font-black text-white mb-2">Senderismo y paseo largo</h2>
         <p class="text-slate-400 text-sm mb-4">Cuando el destino es una ruta y no una ciudad, la lista cambia.</p>
@@ -229,6 +229,25 @@
       var menu = document.getElementById('mobile-menu');
       if (!button || !menu) return;
       button.addEventListener('click', function () { menu.classList.toggle('hidden'); });
+    })();
+
+    // Reveal al scroll: mismo patrón que js/main.js. Esta página no lo carga
+    // porque ese archivo arrastra la lógica del home (demo del teléfono, toast,
+    // modal archivado), así que se replica solo el observer de .fade-in.
+    (function () {
+      var items = document.querySelectorAll('.fade-in');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function (item) { item.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function (item) { observer.observe(item); });
     })();
   </script>
 </body>
