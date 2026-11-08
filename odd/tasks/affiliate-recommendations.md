@@ -174,3 +174,14 @@ geometría 135°/0-55-100 que el hero, colores fríos), `.rec-card` con el mismo
 **L15.** Decisión de color en light mode: las cards del catálogo usan un tinte slate-azul
 (`rgba(71, 102, 138, 0.10)`) y no el verde de marca, porque el fondo de la sección es frío. Si se
 prefiere el verde de marca como en el home, es cambiar una regla en `css/custom.css`.
+
+**L16.** "Tienes razon, el degradado es el del hero, y en la sección recomendados quiero ese mismo
+diseño, pero en lugar de verde con el azul ya aplicado a esa sección. El resto del diseño ahora se
+ve genial, ah y otra cosa más la nav bar en home usa transparencias y en recomendados no se está
+usando, para que el diseño sea homogeneo en toda la web este debe ser similar en ambas secciones y
+en las futuras."
+
+**L17.** Confirmado por el usuario: azul grisáceo / slate-azul para fondo y cards, verde de marca
+solo en bordes y sombra al hover. La barra de navegación y el reveal de `.fade-in` se extrajeron de
+`js/main.js` a `js/site.js`, compartido por home y recomendados, con `id="navbar"` y las mismas
+clases en ambas. `tools/site-check.cjs` cubre el comportamiento con 14 aserciones.

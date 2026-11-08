@@ -36,7 +36,8 @@
 <body class="gradient-recommended bg-slate-950 text-slate-100 font-sans antialiased">
 
   <!-- Navegación -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 border-b border-slate-800 navbar-blur">
+  <nav id="navbar"
+       class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 navbar-blur">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
 
@@ -222,33 +223,6 @@
     </div>
   </footer>
 
-  <script>
-    // Menú móvil: esta página no carga js/main.js para no arrastrar lógica del home.
-    (function () {
-      var button = document.getElementById('menu-btn');
-      var menu = document.getElementById('mobile-menu');
-      if (!button || !menu) return;
-      button.addEventListener('click', function () { menu.classList.toggle('hidden'); });
-    })();
-
-    // Reveal al scroll: mismo patrón que js/main.js. Esta página no lo carga
-    // porque ese archivo arrastra la lógica del home (demo del teléfono, toast,
-    // modal archivado), así que se replica solo el observer de .fade-in.
-    (function () {
-      var items = document.querySelectorAll('.fade-in');
-      if (!('IntersectionObserver' in window)) {
-        items.forEach(function (item) { item.classList.add('visible'); });
-        return;
-      }
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        });
-      }, { threshold: 0.12 });
-      items.forEach(function (item) { observer.observe(item); });
-    })();
-  </script>
+  <script src="js/site.js"></script>
 </body>
 </html>
