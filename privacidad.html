@@ -54,27 +54,50 @@
   <!-- Google Tag Manager (noscript) -->
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Nav mínima -->
-  <nav class="bg-slate-900/95 border-b border-slate-800 px-4 py-4 sticky top-0 z-50">
-    <div class="max-w-3xl mx-auto flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 group" aria-label="GuauGuauCars inicio">
+  <!-- Nav principal — mismo componente que el resto del sitio (js/site.js) -->
+  <nav id="navbar"
+       class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 navbar-blur">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <a href="index.html" class="flex items-center gap-2 group" aria-label="GuauGuauCars inicio">
           <div class="bg-white rounded-full p-0.5 shadow-sm group-hover:shadow-brand/30 transition-shadow">
-            <img
-              src="assets/images/Logo Guauguaucar-05.png"
-              alt="GuauGuauCars"
-              class="h-9 w-9 rounded-full object-contain"
-            />
+            <img src="assets/images/Logo Guauguaucar-05.png" alt="GuauGuauCars" class="h-10 w-10 rounded-full object-contain" />
           </div>
-          <span class="font-black text-lg tracking-tight text-white">GuauGuauCars</span>
+          <span class="font-black text-lg tracking-tight text-white hidden sm:block">GuauGuauCars</span>
         </a>
-      <a href="/" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-1">
-        <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
-          <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10z" clip-rule="evenodd"/>
-        </svg>
-        Volver al inicio
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="index.html#como-funciona" class="text-slate-400 hover:text-white transition-colors">Cómo funciona</a>
+          <a href="index.html#protectoras"   class="text-slate-400 hover:text-white transition-colors">Protectoras</a>
+          <a href="recomendados.html"        class="text-slate-400 hover:text-white transition-colors">Recomendados</a>
+          <a href="index.html#contacto"
+             class="bg-brand hover:bg-brand-dark text-white font-semibold px-5 py-2 rounded-full transition-colors">
+            Unirme a la Beta
+          </a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden text-slate-400 hover:text-white p-2 rounded-lg transition-colors" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-t border-slate-800 px-4 py-4 space-y-3">
+      <a href="index.html#como-funciona" class="block text-slate-300 hover:text-white py-2 transition-colors">Cómo funciona</a>
+      <a href="index.html#protectoras"   class="block text-slate-300 hover:text-white py-2 transition-colors">Protectoras</a>
+      <a href="recomendados.html"        class="block text-slate-300 hover:text-white py-2 transition-colors">Recomendados</a>
+      <a href="index.html#contacto"
+         class="block bg-brand text-white font-semibold px-5 py-3 rounded-xl text-center hover:bg-brand-dark transition-colors">
+        Unirme a la Beta
       </a>
     </div>
   </nav>
+
+  <!-- Espacio para la barra fija (antes el nav era sticky y ocupaba flujo) -->
+  <div class="h-16" aria-hidden="true"></div>
 
   <!-- Banner borrador -->
   <div class="bg-amber-900/40 border-b border-amber-700/50 px-4 py-3">
@@ -352,5 +375,7 @@
     </div>
   </footer>
 
+
+  <script src="js/site.js" defer></script>
 </body>
 </html>

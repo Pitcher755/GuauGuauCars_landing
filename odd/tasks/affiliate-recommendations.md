@@ -185,3 +185,15 @@ en las futuras."
 solo en bordes y sombra al hover. La barra de navegación y el reveal de `.fade-in` se extrajeron de
 `js/main.js` a `js/site.js`, compartido por home y recomendados, con `id="navbar"` y las mismas
 clases en ambas. `tools/site-check.cjs` cubre el comportamiento con 14 aserciones.
+
+**L18.** "Si unificalo entero aunque haya que rehacer ese navbar, toda la web debe ser homogenea. Y
+vuelvo de nuevo al degradado de la sección /recomendados quiero que ese degradado se vea en el
+header ya que esta sección no tiene hero."
+
+**L19.** Hallazgos de la unificación: las legales usaban un nav `sticky` (en flujo), así que al
+pasarlo a `fixed` necesita un espaciador de `h-16`; y no cargaban `js/site.js`, por lo que el nav
+nuevo se habría quedado transparente para siempre. En light mode, `hover:text-white` sobre la barra
+clara dejaba el enlace invisible: se corrige con una regla acotada a `#navbar`. Además
+`recomendados.html` declaraba un `brand-dark` inventado (`#358668`); ahora las cuatro páginas usan
+`#358A6B`. El "azul" que el usuario aprueba es el slate por defecto de Tailwind: el home lo
+sobrescribe con grises neutros y recomendados no, y eso se conserva a propósito.

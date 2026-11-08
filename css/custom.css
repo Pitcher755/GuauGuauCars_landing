@@ -16,12 +16,11 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(135deg, #121212 0%, #182820 55%, #121212 100%);
 }
 
-/* ── Gradiente de la página de recomendados ──
+/* ── Gradiente del header de recomendados ──
    Misma geometría que .gradient-hero (135°, tres paradas en 0 / 55 / 100);
-   solo cambian los colores, para separar el catálogo del resto del sitio. */
+   solo cambian los colores. Vive en el <header> porque esa página no tiene hero. */
 .gradient-recommended {
   background: linear-gradient(135deg, #0f172a 0%, #17263c 55%, #0f172a 100%);
-  background-attachment: fixed;
 }
 
 /* ── Card del catálogo — misma mecánica que .benefit-card ──
@@ -455,6 +454,9 @@ html { scroll-behavior: smooth; }
   /* ── Scrollbar ── */
   ::-webkit-scrollbar-track { background: #F5F5F5; }
   ::-webkit-scrollbar-thumb { background: rgba(68, 166, 130, 0.40); }
+
+  /* ── Navbar: hover:text-white no es legible sobre la barra clara ── */
+  #navbar a.hover\:text-white:hover { color: #1a3a35 !important; }
 
   /* ── Navbar scrolled ── */
   #navbar.bg-white\/95 {

@@ -25,7 +25,24 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#44a682', dark: '#358668', light: '#5fc09c' } }, fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Mismo brand que el resto del sitio (AppColors.dart).
+            // A propósito NO se sobrescribe `slate`: esta página usa el slate
+            // azulado por defecto de Tailwind, que es el tono que la separa
+            // del gris neutro del home.
+            brand:         '#44A682',
+            'brand-dark':  '#358A6B',
+            'brand-light': '#5DC49A',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
   </script>
   <link rel="stylesheet" href="css/custom.css" />
 
@@ -33,7 +50,7 @@
   <script src="js/consent.js" defer></script>
 </head>
 
-<body class="gradient-recommended bg-slate-950 text-slate-100 font-sans antialiased">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
 
   <!-- Navegación -->
   <nav id="navbar"
@@ -78,7 +95,7 @@
   </nav>
 
   <!-- Cabecera -->
-  <header class="pt-32 pb-12 bg-slate-950">
+  <header class="gradient-recommended relative pt-32 pb-16">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <span class="text-brand font-semibold text-sm uppercase tracking-widest">Recomendados</span>
       <h1 class="text-3xl sm:text-5xl font-black text-white mt-3 mb-5">Recomendados para viajar con tu mascota</h1>
