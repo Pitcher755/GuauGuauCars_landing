@@ -4,6 +4,9 @@
 
 // ── Analytics (GTM dataLayer) ───────────────────────────────────────
 function pushEvent(event, params = {}) {
+  // Sin consentimiento de analítica no se emite nada: GTM ni siquiera está cargado.
+  if (!window.gcConsent || typeof window.gcConsent.analytics !== 'function') return;
+  if (!window.gcConsent.analytics()) return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event, ...params });
 }

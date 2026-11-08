@@ -133,21 +133,14 @@
    }
    </script>
 
-  <!-- ── Google Tag Manager ── -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M38485DD');</script>
-  <!-- End Google Tag Manager -->
+  <!-- ── Consentimiento de cookies ──
+       Google Tag Manager ya no se inyecta aquí: js/consent.js lo carga solo
+       después de que el visitante acepte la categoría de analítica. -->
+  <script src="js/consent.js" defer></script>
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
 
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M38485DD"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ════════════════════════════════════════════════════════════
        NAVBAR
@@ -904,7 +897,7 @@
         <div class="flex gap-6 text-sm text-slate-500">
           <a href="terminos.html" class="hover:text-slate-300 transition-colors">Aviso legal</a>
           <a href="privacidad.html" class="hover:text-slate-300 transition-colors">Privacidad</a>
-          <a href="privacidad.html#cookies" class="hover:text-slate-300 transition-colors">Cookies</a>
+          <a href="privacidad.html#cookies" data-consent-open class="hover:text-slate-300 transition-colors">Cookies</a>
         </div>
       </div>
 

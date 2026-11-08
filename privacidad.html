@@ -44,19 +44,14 @@
   <link rel="stylesheet" href="css/custom.css" />
 
   <!-- ── Google Tag Manager ── -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M38485DD');</script>
+  <!-- Google Tag Manager se carga solo tras el consentimiento (js/consent.js). -->
+  <script src="js/consent.js" defer></script>
   <!-- End Google Tag Manager -->
 </head>
 
 <body class="bg-slate-950 text-slate-300 antialiased font-sans">
 
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M38485DD"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- Nav mínima -->
@@ -277,22 +272,44 @@
               </tr>
               <tr class="border-b border-slate-800/60">
                 <td class="py-3 pr-4"><span class="text-white font-medium">Analíticas</span></td>
-                <td class="py-3 pr-4">Entender cómo se usa la plataforma para mejorarla.</td>
+                <td class="py-3 pr-4">Entender cómo se usa la plataforma para mejorarla. Solo se activan con tu consentimiento.</td>
                 <td class="py-3">12 meses</td>
               </tr>
-              <tr>
+              <tr class="border-b border-slate-800/60">
                 <td class="py-3 pr-4"><span class="text-white font-medium">Preferencias</span></td>
                 <td class="py-3 pr-4">Recordar tu configuración e idioma.</td>
                 <td class="py-3">6 meses</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4"><span class="text-white font-medium">Afiliación (terceros)</span></td>
+                <td class="py-3 pr-4">Cookies que instala Amazon al comprar desde nuestros enlaces de recomendados, para atribuir la comisión. Solo se activan con tu consentimiento.</td>
+                <td class="py-3">Según Amazon</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <p class="text-slate-400 text-sm mt-4 leading-relaxed">
-          Puedes gestionar o deshabilitar las cookies desde la configuración de tu navegador.
-          Ten en cuenta que deshabilitar ciertas cookies puede afectar al funcionamiento del servicio.
-          No utilizamos cookies de terceros con fines publicitarios.
+          Las cookies técnicas son necesarias para el servicio. Las analíticas y las de afiliación
+          solo se activan después de que aceptes esa categoría en el aviso de cookies; hasta
+          entonces quedan bloqueadas y Google Tag Manager ni siquiera se carga. Puedes cambiar tu
+          decisión en cualquier momento desde el enlace <strong class="text-white">Cookies</strong>
+          del pie de página. También puedes gestionarlas desde la configuración de tu navegador;
+          deshabilitar ciertas cookies puede afectar al funcionamiento del servicio.
+        </p>
+
+        <h3 class="text-lg font-bold text-white mt-8 mb-3">7.1. Enlaces de afiliado de Amazon</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-3">
+          Algunos enlaces de la sección de recomendados son enlaces de afiliado del Programa de
+          Afiliados de Amazon. Como Asociado de Amazon, GuauGuauCars obtiene ingresos por las
+          compras adscritas que cumplen los requisitos aplicables. El precio que pagas es el mismo
+          que pagarías entrando directamente en Amazon.
+        </p>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Cuando sigues uno de esos enlaces, Amazon puede instalar cookies propias para atribuir la
+          compra. GuauGuauCars no recibe datos personales tuyos por esta vía: solo un informe
+          agregado de comisiones. El tratamiento que Amazon hace de esos datos se rige por su propia
+          política de privacidad.
         </p>
       </section>
 
