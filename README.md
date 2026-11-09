@@ -36,6 +36,31 @@ Deployada en Firebase Hosting: **https://guauguaucars.com**
 
 ---
 
+## Estructura del proyecto
+
+```
+index.html            Home: hero, cómo funciona, protectoras, recomendados, formulario beta
+recomendados.html     Catálogo de afiliados, cinco categorías (indexable)
+terminos.html         Términos y Condiciones (noindex, banner de borrador)
+privacidad.html       Política de Privacidad + detalle de cookies (noindex)
+404.html              Página de error de Firebase Hosting
+robots.txt            Permite todo el rastreo y apunta al sitemap
+sitemap.xml           Home y /recomendados.html; las legales quedan fuera a propósito
+css/custom.css        Estilos propios y bloque de modo claro
+js/site.js            Comportamiento compartido: navbar fija, menú móvil, reveal `.fade-in`
+js/main.js            Lógica del home: demo de la app, formulario beta, analítica
+js/consent.js         Consentimiento de cookies (`window.gcConsent`)
+tools/site-check.cjs  Verificación del comportamiento compartido (sin dependencias)
+tools/consent-check.cjs Verificación del bloqueo de cookies (sin dependencias)
+assets/               Imágenes, logos y capturas
+odd/                  Documentación interna de desarrollo (no se publica)
+```
+
+`js/site.js` existe separado de `js/main.js` para que las páginas que no cargan la lógica del home
+—`recomendados.html` y las que vengan— compartan exactamente la misma navbar y el mismo reveal.
+
+---
+
 ## Funcionalidades operativas en producción ✅
 
 - **Formulario beta** → guarda lead en Firestore `beta_leads`
@@ -88,6 +113,38 @@ node tools/consent-check.cjs   # 15 aserciones sobre el gating; sale 0 si todo p
 
 ---
 
+## Analítica y eventos
+
+Google Tag Manager (`GTM-M38485DD`) es el único contenedor; GA4 (`G-3J490P05RV`) se configura como
+etiqueta dentro de GTM. No se añade `gtag.js` directo al HTML: duplicaría los page views.
+
+`pushEvent()` en `js/main.js` no emite nada sin consentimiento de analítica, y GTM ni siquiera se
+carga hasta entonces. Eventos instrumentados:
+
+| Evento | Cuándo |
+|---|---|
+| `demo_carousel_interacted` | Navegación del carrusel de la app (`action`: dot, prev, next, swipe_prev, swipe_next) |
+| `section_visible` | Sección visible en el viewport (`section_id`) |
+| `beta_form_started` | Primer foco en el formulario beta |
+| `lead_type_selected` | Selección de tipo de lead (`lead_type`) |
+| `beta_form_submitted` | Envío correcto (`lead_type`) |
+| `beta_form_error` | Fallo de red o de API (`error_type`, `error_message`) |
+| `apoya_modal_opened` | Apertura del modal de la sección de apoyo |
+| `social_link_clicked` | Clic en un enlace social (`platform`) |
+
+---
+
+## Comprobaciones locales
+
+Ambas corren sin dependencias y salen con código 1 si algo falla:
+
+```bash
+node tools/site-check.cjs      # navbar, menú móvil y reveal
+node tools/consent-check.cjs   # bloqueo de cookies y persistencia de la decisión
+```
+
+---
+
 ## Desarrollo local
 
 ```bash
@@ -103,48 +160,40 @@ El deploy excluye los archivos internos (`odd/**`, `tools/**` y todos los `.md`)
 ## Orden de implementación — Backlog
 
 Las issues están en: https://github.com/Pitcher755/GuauGuauCars_landing/issues
+Estado revisado el 2026-11-09 contra `GuauGuauCars-Mobile/develop`. Todo el backend de esta
+sección vive en `GuauGuauCars-Mobile/functions/`, nunca en este repo.
 
-### 🗂️ EPIC 1 — Schema y fundamentos del descuento (base de todo lo demás)
+### ✅ Implementado en `develop` — solo falta cerrar la issue
 
-| # | Issue | Prioridad |
-|---|-------|-----------|
-| 1 | [#1 — Añadir `discountTier` a `beta_leads`](../../issues/1) | 🔴 Alta |
-| 2 | [#2 — Añadir `betaTier` y `betaDiscountExpiresAt` a `users`](../../issues/2) | 🔴 Alta |
-| 3 | [#3 — Crear `config/beta` en Firestore](../../issues/3) | 🔴 Alta |
-| 4 | [#11 — Añadir `betaAccessSentAt` a `beta_leads`](../../issues/11) | 🔴 Alta |
+| Issue | Qué entrega | PR mobile |
+|---|---|---|
+| [#5](../../issues/5) | Kill-switch `config/beta.grantNewDiscounts` | #307 |
+| [#7](../../issues/7) | Scheduler `autoExpireBetaDiscounts` (diario, crowdfunding > 12 meses) | #311 |
+| [#11](../../issues/11) | Campo `betaAccessSentAt` + idempotencia del broadcast | #312 |
+| [#10](../../issues/10) | Template HTML "¡La Beta está abierta!" | #314 |
+| [#12](../../issues/12) | `sendBetaAccessEmail` — envío individual | #315 |
+| [#13](../../issues/13) | `broadcastBetaAccess` — envío masivo con rate limiting | #317 |
 
-### 🗂️ EPIC 2 — Detección y asignación automática
+### ✅ Cerradas
 
-| # | Issue | Prioridad | Depende de |
-|---|-------|-----------|-----------|
-| 5 | [#4 — `mark_user_as_beta_service`: leer y propagar `discountTier`](../../issues/4) | 🔴 Alta | #1, #2 |
-| 6 | [#5 — `mark_user_as_beta_service`: verificar `grantNewDiscounts`](../../issues/5) | 🔴 Alta | #3 |
-| 7 | [#6 — `createPaymentIntent`: validar descuento no expirado](../../issues/6) | 🔴 Alta | #2 |
+[#1](../../issues/1) · [#2](../../issues/2) · [#3](../../issues/3) · [#4](../../issues/4) ·
+[#6](../../issues/6) · [#18](../../issues/18) · [#19](../../issues/19)
 
-### 🗂️ EPIC 3 — Control de descuentos (activar / desactivar)
+### 🔲 Pendientes, en orden de implementación
 
-| # | Issue | Prioridad | Depende de |
-|---|-------|-----------|-----------|
-| 8 | [#7 — Scheduler: auto-expirar descuentos crowdfunding](../../issues/7) | 🟡 Media | #2 |
-| 9 | [#8 — `revokeUserBetaDiscount`: revocación individual](../../issues/8) | 🟡 Media | — |
-| 10 | [#9 — Flutter: badge de descuento beta en perfil](../../issues/9) | 🟡 Media | #2 |
+| Orden | Issue | Qué es | Dónde | Depende de | Prioridad |
+|---|---|---|---|---|---|
+| 1 | [#8](../../issues/8) | `revokeUserBetaDiscount`: revocación individual de descuento | 📱 Mobile (functions/) | — | 🟡 Media |
+| 2 | [#9](../../issues/9) | Flutter: badge de descuento beta en perfil con fecha de caducidad | 📱 Mobile (Flutter) | #2 (cerrada) | 🟡 Media |
+| 3 | [#14](../../issues/14) | Doc: flujo completo formulario → Firestore → emails → descuento | 📝 Docs | #12, #13 (hechas) | 🟢 Baja |
+| 4 | [#16](../../issues/16) | Doc: procedimiento de broadcast de apertura de beta | 📝 Docs | #13 (hecha) | 🟢 Baja |
+| 5 | [#15](../../issues/15) | Doc: lifecycle del descuento (grant → expiry → revocation) | 📝 Docs | #7 (hecha), #8 | 🟢 Baja |
+| 6 | [#17](../../issues/17) | Doc: funcionalidades de la landing en README | 📝 Docs | Todo lo anterior | 🟢 Baja |
 
-### 🗂️ EPIC 4 — Envío masivo: apertura de la beta
-
-| # | Issue | Prioridad | Depende de |
-|---|-------|-----------|-----------|
-| 11 | [#10 — Template HTML "¡La Beta está abierta!"](../../issues/10) | 🔴 Alta | — |
-| 12 | [#12 — `sendBetaAccessEmail`: envío individual](../../issues/12) | 🔴 Alta | #10, #11 |
-| 13 | [#13 — `broadcastBetaAccess`: envío masivo con rate limiting](../../issues/13) | 🔴 Alta | #12, #3 |
-
-### 🗂️ EPIC 5 — Documentación
-
-| # | Issue | Prioridad |
-|---|-------|-----------|
-| 14 | [#14 — Documentar flujo completo lead → descuento](../../issues/14) | 🟢 Baja |
-| 15 | [#15 — Documentar lifecycle del descuento](../../issues/15) | 🟢 Baja |
-| 16 | [#16 — Documentar procedimiento de broadcast](../../issues/16) | 🟢 Baja |
-| 17 | [#17 — Documentar funcionalidades de la landing](../../issues/17) | 🟢 Baja |
+Orden razonado: primero se cierra el código del lifecycle (#8), porque su documentación (#15)
+no puede describir una revocación que todavía no existe; después la única pieza de UI visible
+para el usuario (#9); y al final la documentación, que se apoya sobre el estado final y termina
+con el README del repo (#17).
 
 ---
 
